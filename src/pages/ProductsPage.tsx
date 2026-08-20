@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  Search, 
-  FileText, 
-  Phone
-} from 'lucide-react';
+import { Search, FileText, Phone, ArrowRight } from 'lucide-react';
 import { PRODUCTS_CATALOG, COMPANY_INFO, type ProductItem } from '../data/ecocreteData';
 
 interface ProductsPageProps {
@@ -11,309 +7,304 @@ interface ProductsPageProps {
   onOpenQuote: (productId?: string) => void;
 }
 
-export const ProductsPage: React.FC<ProductsPageProps> = ({
-  onOpenSpecSheet,
-  onOpenQuote,
-}) => {
+const CATEGORIES: { id: 'all' | 'walling' | 'terraforce' | 'precast'; label: string; sub?: string }[] = [
+  { id: 'all', label: 'All Products' },
+  { id: 'walling', label: 'Walling', sub: 'Uniquall · Precon' },
+  { id: 'terraforce', label: 'Terraforce®', sub: 'L15 · 4x4 · Step · Bat · Terrafix · Terrapac' },
+  { id: 'precast', label: 'Precast', sub: 'Stepping stones · Pillars · Caps · Copings · Sills · Balls · Waskattie · Kerbs' }
+];
+
+export const ProductsPage: React.FC<ProductsPageProps> = ({ onOpenSpecSheet, onOpenQuote }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = [
-    { id: 'all', label: 'All Precast Products' },
-    { id: 'retaining', label: 'Retaining & Green Belts (Terraforce®)' },
-    { id: 'structural', label: 'Structural Beams & Slabs' },
-    { id: 'boundary', label: 'Boundary & Security Walls' },
-    { id: 'drainage', label: 'Stormwater Box Culverts & Pipes' },
-    { id: 'paving', label: 'Kerbs & Paving' },
-  ];
-
   const filteredProducts = PRODUCTS_CATALOG.filter((prod) => {
     const matchesCategory = activeCategory === 'all' || prod.category === activeCategory;
+    const q = searchQuery.toLowerCase();
     const matchesSearch =
-      prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      prod.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      prod.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      prod.application.toLowerCase().includes(searchQuery.toLowerCase());
+      prod.name.toLowerCase().includes(q) ||
+      prod.code.toLowerCase().includes(q) ||
+      prod.shortDesc.toLowerCase().includes(q) ||
+      prod.application.toLowerCase().includes(q);
     return matchesCategory && matchesSearch;
   });
 
+  const activeMeta = CATEGORIES.find((c) => c.id === activeCategory);
+
   return (
-    <div className="products-page" style={{ backgroundColor: 'var(--bg-primary)' }}>
-      
-      {/* 1. Page Banner */}
-      <section style={{
-        padding: '5rem 0 3.5rem',
-        backgroundColor: '#0F1010',
-        borderBottom: '1px solid var(--border-dark)'
-      }} className="bg-grid-dark">
-        <div className="container">
-          <div style={{ maxWidth: '820px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '0.8rem' }}>
-              <span className="mono-tag green">SABS 1215 QUALITY ASSURED</span>
-              <span className="mono-tag green">{COMPANY_INFO.licenseText}</span>
-            </div>
+    <div className="products-page">
 
-            <h1 style={{ fontSize: '3.6rem', color: '#FFFFFF', marginBottom: '1.25rem', lineHeight: 1.1 }}>
-              Precast Concrete <br />
-              <span style={{ color: '#92D04F' }}>Products Showcase</span>
-            </h1>
-
-            <p style={{ color: 'rgba(255, 255, 255, 0.88)', fontSize: '1.12rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-              Explore our SABS-tested precast catalog. From open-loop round face Terraforce® retaining blocks to heavy-duty 40 MPa structural T-beams and stormwater box culverts. Click any product to inspect or print technical spec sheets.
-            </p>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-              <button
-                onClick={() => onOpenQuote()}
-                className="btn btn-primary"
-                style={{ padding: '0.9rem 2rem' }}
-              >
-                <FileText size={17} />
-                <span>Request Bulk Quotation</span>
-              </button>
-              <a
-                href={`tel:${COMPANY_INFO.phoneClean}`}
-                className="btn btn-outline-dark"
-                style={{ padding: '0.9rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-              >
-                <Phone size={17} style={{ color: '#92D04F' }} />
-                <span>Call Sales: {COMPANY_INFO.phone}</span>
-              </a>
-            </div>
+      {/* ============================================================
+          HERO — dark banner
+          ============================================================ */}
+      <section
+        style={{
+          position: 'relative',
+          padding: '4.5rem 0 4rem',
+          backgroundImage: `linear-gradient(rgba(20, 24, 22, 0.78), rgba(20, 24, 22, 0.72)), url('/images/stepping-stones-display.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          color: '#FFFFFF'
+        }}
+      >
+        <div className="container" style={{ textAlign: 'center' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+            padding: '0.35rem 0.9rem',
+            backgroundColor: 'rgba(146, 208, 79, 0.18)',
+            border: '1px solid rgba(146, 208, 79, 0.4)',
+            borderRadius: '999px',
+            fontSize: '0.75rem', fontWeight: 700, color: '#C8E9A3',
+            marginBottom: '1.25rem', letterSpacing: '0.08em', textTransform: 'uppercase'
+          }}>
+            Our full range
           </div>
+          <h1 style={{
+            fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', lineHeight: 1.1, fontWeight: 700,
+            margin: '0 auto 1rem', maxWidth: '860px', letterSpacing: '-0.015em', color: '#FFFFFF'
+          }}>
+            Everything we cast, on one page.
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', maxWidth: '640px', margin: '0 auto', lineHeight: 1.55 }}>
+            Walling, Terraforce® and the full Precast range — filter by family and search by name or code.
+          </p>
         </div>
       </section>
 
-      {/* 2. Catalog Category Filters & Search */}
-      <section style={{
-        padding: '1.75rem 0',
-        backgroundColor: 'var(--bg-surface)',
-        borderBottom: '1px solid var(--border-dark)',
-        position: 'sticky',
-        top: '74px',
-        zIndex: 50,
-        backdropFilter: 'blur(10px)'
-      }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-          
-          {/* Category Tabs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
+      {/* ============================================================
+          FILTER BAR — categories + search
+          ============================================================ */}
+      <section style={{ backgroundColor: '#FCFDFA', borderBottom: '1px solid #E6E9E2', padding: '1.6rem 0' }}>
+        <div className="container">
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              {CATEGORIES.map((cat) => {
+                const active = activeCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    style={{
+                      padding: '0.6rem 1.1rem',
+                      borderRadius: '4px',
+                      border: '1px solid',
+                      borderColor: active ? '#92D04F' : '#E6E9E2',
+                      backgroundColor: active ? '#92D04F' : '#FFFFFF',
+                      color: active ? '#141816' : '#4A4E4A',
+                      fontSize: '0.88rem', fontWeight: 700,
+                      cursor: 'pointer', fontFamily: 'inherit',
+                      letterSpacing: '0.02em', transition: 'all 0.15s'
+                    }}
+                  >
+                    {cat.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+              backgroundColor: '#FFFFFF', border: '1px solid #E6E9E2',
+              borderRadius: '4px', padding: '0.5rem 0.85rem',
+              minWidth: '260px'
+            }}>
+              <Search size={16} style={{ color: '#7C7C7D' }} />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search products..."
                 style={{
-                  backgroundColor: activeCategory === cat.id ? 'var(--accent-terracotta)' : 'rgba(255, 255, 255, 0.05)',
-                  color: activeCategory === cat.id ? '#FFFFFF' : 'var(--text-muted)',
-                  border: activeCategory === cat.id ? '1px solid var(--accent-terracotta)' : '1px solid var(--border-dark)',
-                  padding: '0.5rem 0.9rem',
-                  borderRadius: '3px',
-                  fontSize: '0.84rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  transition: '0.2s'
+                  border: 'none', outline: 'none', flex: 1,
+                  fontSize: '0.9rem', color: '#232623', backgroundColor: 'transparent',
+                  fontFamily: 'inherit'
                 }}
-              >
-                {cat.label}
-              </button>
-            ))}
+              />
+            </div>
           </div>
 
-          {/* Search Input */}
-          <div style={{ position: 'relative', width: '280px', maxWidth: '100%' }}>
-            <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-            <input
-              type="text"
-              placeholder="Search product code / application..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '0.6rem 1rem 0.6rem 2.4rem',
-                backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                border: '1px solid var(--border-dark)',
-                borderRadius: '3px',
-                color: '#FFF',
-                fontSize: '0.88rem',
-                fontFamily: 'var(--font-body)'
-              }}
-            />
-          </div>
-
+          {activeMeta && activeMeta.sub && (
+            <div style={{
+              marginTop: '0.9rem', fontSize: '0.82rem', color: '#7C7C7D',
+              display: 'flex', gap: '0.5rem', alignItems: 'center'
+            }}>
+              <span style={{ fontWeight: 700, color: '#6FA240' }}>{activeMeta.label}</span>
+              <span>·</span>
+              <span>{activeMeta.sub}</span>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* 3. Products Grid */}
-      <section style={{ padding: '5rem 0' }}>
+      {/* ============================================================
+          PRODUCT GRID
+          ============================================================ */}
+      <section style={{ padding: '3.5rem 0 5rem', backgroundColor: '#F5F7F3' }}>
         <div className="container">
-          
+          <div style={{ marginBottom: '1.5rem', color: '#7C7C7D', fontSize: '0.9rem' }}>
+            Showing <strong style={{ color: '#232623' }}>{filteredProducts.length}</strong>{' '}
+            {filteredProducts.length === 1 ? 'product' : 'products'}
+            {activeCategory !== 'all' && (
+              <> in <strong style={{ color: '#232623' }}>{activeMeta?.label}</strong></>
+            )}
+          </div>
+
           {filteredProducts.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '5rem 1rem', backgroundColor: 'var(--bg-surface)', borderRadius: '4px', border: '1px solid var(--border-dark)' }}>
-              <div style={{ fontSize: '1.25rem', color: '#FFF', marginBottom: '0.5rem' }}>No products found</div>
-              <p style={{ color: 'var(--text-muted)' }}>Try selecting "All Precast Products" or clearing your search term.</p>
-              <button
-                onClick={() => { setActiveCategory('all'); setSearchQuery(''); }}
-                className="btn btn-outline-dark"
-                style={{ marginTop: '1rem' }}
-              >
-                Reset Catalog Filter
-              </button>
+            <div style={{
+              padding: '3rem', backgroundColor: '#FFFFFF',
+              border: '1px dashed #E6E9E2', borderRadius: '6px',
+              textAlign: 'center', color: '#7C7C7D'
+            }}>
+              No products match this search. Try a different keyword or category.
             </div>
           ) : (
-            <div className="arch-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
               {filteredProducts.map((product) => (
-                <div
+                <article
                   key={product.id}
-                  className="arch-card"
                   style={{
-                    gridColumn: 'span 4',
-                    padding: '2rem',
-                    justifyContent: 'space-between',
-                    minHeight: '520px'
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #E6E9E2',
+                    borderRadius: '6px',
+                    overflow: 'hidden',
+                    display: 'flex', flexDirection: 'column',
+                    transition: 'transform 0.2s, box-shadow 0.2s'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.boxShadow = '0 12px 28px rgba(0,0,0,0.08)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
-                  <div>
-                    {/* Top Row: Product Code & Licensed Badge */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                      <span className="mono-tag dark">{product.code}</span>
-                      {product.licensed ? (
-                        <span className="mono-tag green">TERRAFORCE® LICENSED</span>
-                      ) : (
-                        <span style={{ fontSize: '0.78rem', color: '#79D1A5', fontWeight: 700 }}>SABS TESTED</span>
-                      )}
-                    </div>
-
-                    {/* Image Thumbnail */}
-                    <div style={{
-                      height: '210px',
-                      borderRadius: '3px',
-                      overflow: 'hidden',
-                      marginBottom: '1.25rem',
-                      border: '1px solid var(--border-dark)',
-                      backgroundColor: '#101111'
+                  <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', backgroundColor: '#F5F7F3' }}>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    />
+                    {product.licensed && (
+                      <span style={{
+                        position: 'absolute', top: '0.65rem', left: '0.65rem',
+                        padding: '0.25rem 0.6rem', fontSize: '0.68rem', fontWeight: 700,
+                        letterSpacing: '0.06em', textTransform: 'uppercase',
+                        color: '#141816', backgroundColor: '#92D04F', borderRadius: '3px'
+                      }}>
+                        Licensed
+                      </span>
+                    )}
+                    <span style={{
+                      position: 'absolute', top: '0.65rem', right: '0.65rem',
+                      padding: '0.25rem 0.6rem', fontSize: '0.68rem', fontWeight: 700,
+                      letterSpacing: '0.06em', textTransform: 'uppercase',
+                      color: '#FFFFFF', backgroundColor: 'rgba(20, 24, 22, 0.85)', borderRadius: '3px'
                     }}>
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
-                      />
-                    </div>
+                      {product.categoryLabel}
+                    </span>
+                  </div>
 
-                    {/* Product Name & Short Desc */}
-                    <h3 style={{ fontSize: '1.4rem', color: '#FFFFFF', marginBottom: '0.6rem', lineHeight: 1.2 }}>
+                  <div style={{ padding: '1.25rem 1.25rem 1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <div style={{ fontSize: '0.72rem', color: '#7C7C7D', letterSpacing: '0.06em', marginBottom: '0.3rem', fontFamily: 'var(--font-mono)' }}>
+                      {product.code}
+                    </div>
+                    <h3 style={{ fontSize: '1.05rem', color: '#232623', margin: '0 0 0.5rem', lineHeight: 1.3 }}>
                       {product.name}
                     </h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.25rem', lineHeight: 1.5 }}>
+                    <p style={{ fontSize: '0.88rem', color: '#555', lineHeight: 1.5, margin: '0 0 1rem', flex: 1 }}>
                       {product.shortDesc}
                     </p>
 
-                    {/* Specification Badges Box */}
                     <div style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid var(--border-dark)',
-                      padding: '0.8rem 1rem',
-                      borderRadius: '3px',
-                      marginBottom: '1.5rem',
-                      fontSize: '0.82rem',
-                      fontFamily: 'var(--font-mono)'
+                      display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem',
+                      padding: '0.7rem', backgroundColor: '#F5F7F3', borderRadius: '4px', marginBottom: '1rem'
                     }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
-                        <span style={{ color: 'var(--text-muted)' }}>DIMENSIONS:</span>
-                        <span style={{ color: '#FFF' }}>{product.dimensions}</span>
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: '#7C7C7D', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Size</div>
+                        <div style={{ fontSize: '0.82rem', color: '#232623', fontWeight: 600 }}>{product.dimensions}</div>
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
-                        <span style={{ color: 'var(--text-muted)' }}>MASS:</span>
-                        <span style={{ color: '#FFF' }}>{product.weight}</span>
-                      </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <span style={{ color: 'var(--text-muted)' }}>STRENGTH:</span>
-                        <span style={{ color: '#6FA240' }}>{product.strengthMPa}</span>
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: '#7C7C7D', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Strength</div>
+                        <div style={{ fontSize: '0.82rem', color: '#232623', fontWeight: 600 }}>{product.strengthMPa}</div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Actions */}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-                    paddingTop: '1.25rem'
-                  }}>
-                    <button
-                      onClick={() => onOpenSpecSheet(product)}
-                      className="btn btn-outline-dark"
-                      style={{ flex: 1, padding: '0.75rem', fontSize: '0.85rem' }}
-                    >
-                      <FileText size={15} />
-                      <span>Spec Sheet</span>
-                    </button>
-                    <button
-                      onClick={() => onOpenQuote(product.id)}
-                      className="btn btn-primary"
-                      style={{ flex: 1, padding: '0.75rem', fontSize: '0.85rem' }}
-                    >
-                      <span>Quote</span>
-                    </button>
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <button
+                        onClick={() => onOpenSpecSheet(product)}
+                        style={{
+                          flex: 1,
+                          backgroundColor: '#141816', color: '#FFFFFF', border: 'none',
+                          padding: '0.65rem 0.85rem', borderRadius: '4px',
+                          fontSize: '0.82rem', fontWeight: 700,
+                          cursor: 'pointer', fontFamily: 'inherit',
+                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem'
+                        }}
+                      >
+                        <FileText size={14} /> Spec
+                      </button>
+                      <button
+                        onClick={() => onOpenQuote(product.id)}
+                        style={{
+                          flex: 1,
+                          backgroundColor: '#92D04F', color: '#141816', border: 'none',
+                          padding: '0.65rem 0.85rem', borderRadius: '4px',
+                          fontSize: '0.82rem', fontWeight: 700,
+                          cursor: 'pointer', fontFamily: 'inherit',
+                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem'
+                        }}
+                      >
+                        Quote <ArrowRight size={13} />
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           )}
-
         </div>
       </section>
 
-      {/* 4. SABS & Custom Engineering CTA */}
-      <section style={{
-        padding: '5rem 0',
-        backgroundColor: '#F2F5EF',
-        borderTop: '1px solid #BEC6B9'
-      }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
-          <div style={{ maxWidth: '640px' }}>
-            <div className="mono-tag terracotta" style={{ marginBottom: '0.6rem' }}>
-              <span>CUSTOM STRUCTURAL REINFORCEMENT AVAILABLE</span>
-            </div>
-            <h2 style={{ fontSize: '2.3rem', color: '#232623', marginBottom: '0.8rem' }}>
-              Need custom precast beam lengths or portal culvert specifications?
-            </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6 }}>
-              Send your civil engineer's bending schedules and CAD layout plans directly to <strong style={{ color: '#232623' }}>{COMPANY_INFO.emailPrimary}</strong>. We manufacture in our Free State yard with prompt site delivery.
+      {/* ============================================================
+          BOTTOM CTA — dark
+          ============================================================ */}
+      <section style={{ padding: '3.5rem 0', backgroundColor: '#141816', color: '#FFFFFF' }}>
+        <div className="container" style={{ display: 'flex', gap: '2rem', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+          <div style={{ maxWidth: '620px' }}>
+            <h2 style={{ fontSize: '1.75rem', margin: '0 0 0.5rem', color: '#FFFFFF' }}>Can&apos;t find what you need?</h2>
+            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', margin: 0, lineHeight: 1.55 }}>
+              Custom sizes and non-standard profiles are cast to order on a short lead time. Send us the dimension and quantity.
             </p>
           </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
             <button
               onClick={() => onOpenQuote()}
-              className="btn btn-primary"
-              style={{ padding: '1rem 2rem', fontSize: '1rem' }}
+              style={{
+                backgroundColor: '#92D04F', color: '#141816', border: 'none',
+                padding: '0.85rem 1.5rem', borderRadius: '4px',
+                fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+              }}
             >
-              <span>Submit Engineering Drawings</span>
+              <FileText size={16} /> Request a Quote
             </button>
             <a
               href={`tel:${COMPANY_INFO.phoneClean}`}
-              className="btn btn-outline-dark"
-              style={{ padding: '1rem 1.75rem', fontSize: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+              style={{
+                backgroundColor: 'transparent', color: '#FFFFFF',
+                border: '2px solid rgba(255,255,255,0.35)',
+                padding: '0.75rem 1.5rem', borderRadius: '4px',
+                fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                textDecoration: 'none',
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+              }}
             >
-              <Phone size={18} style={{ color: '#92D04F' }} />
-              <span>{COMPANY_INFO.phone}</span>
+              <Phone size={16} /> {COMPANY_INFO.phone}
             </a>
           </div>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .arch-card {
-            grid-column: span 12 !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };

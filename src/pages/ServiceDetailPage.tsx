@@ -1,28 +1,10 @@
 import React from 'react';
-import { 
-  ArrowLeft, 
-  ShieldCheck, 
-  CheckCircle, 
-  FileText, 
-  Phone, 
-  Award, 
-  Layers, 
-  Ruler, 
-  Leaf, 
-  Droplets, 
-  Clock, 
-  Truck, 
-  Shield, 
-  VolumeX, 
-  Zap, 
-  Sun, 
-  CheckSquare, 
-  Users, 
-  HelpCircle
+import {
+  ArrowLeft, ArrowRight, CheckCircle, FileText, Phone, ChevronRight,
+  Award, Layers, Ruler, Leaf, Droplets, Clock, Truck, Shield, ShieldCheck,
+  VolumeX, Zap, Sun, CheckSquare, Users, HelpCircle
 } from 'lucide-react';
 import { SERVICES_DATA, COMPANY_INFO, type ServiceDetail } from '../data/ecocreteData';
-import { BlockDiagramViewer } from '../components/shared/BlockDiagramViewer';
-import { CaseStudyCard } from '../components/shared/CaseStudyCard';
 
 interface ServiceDetailPageProps {
   serviceId: string;
@@ -31,542 +13,382 @@ interface ServiceDetailPageProps {
   onOpenQuote: (serviceId?: string) => void;
 }
 
-export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
-  serviceId,
-  onBackToServices,
-  onSelectService,
-  onOpenQuote,
-}) => {
-  const service: ServiceDetail = 
-    SERVICES_DATA.find((s) => s.id === serviceId) || SERVICES_DATA[0];
+const renderBenefitIcon = (name: string) => {
+  const props = { size: 20, style: { color: '#6FA240' } };
+  switch (name) {
+    case 'Leaf': return <Leaf {...props} />;
+    case 'Award': return <Award {...props} />;
+    case 'ShieldCheck': return <ShieldCheck {...props} />;
+    case 'Droplets': return <Droplets {...props} />;
+    case 'Clock': return <Clock {...props} />;
+    case 'Layers': return <Layers {...props} />;
+    case 'Ruler': return <Ruler {...props} />;
+    case 'Sun': return <Sun {...props} />;
+    case 'Shield': return <Shield {...props} />;
+    case 'VolumeX': return <VolumeX {...props} />;
+    case 'Zap': return <Zap {...props} />;
+    case 'Truck': return <Truck {...props} />;
+    case 'CheckSquare': return <CheckSquare {...props} />;
+    case 'Users': return <Users {...props} />;
+    case 'Phone': return <Phone {...props} />;
+    default: return <CheckCircle {...props} />;
+  }
+};
 
+export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
+  serviceId, onBackToServices, onSelectService, onOpenQuote
+}) => {
+  const service: ServiceDetail = SERVICES_DATA.find((s) => s.id === serviceId) || SERVICES_DATA[0];
   const otherServices = SERVICES_DATA.filter((s) => s.id !== service.id);
 
-  // Map icon names to components
-  const renderBenefitIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Leaf': return <Leaf size={22} style={{ color: '#92D04F' }} />;
-      case 'Award': return <Award size={22} style={{ color: '#6FA240' }} />;
-      case 'ShieldCheck': return <ShieldCheck size={22} style={{ color: '#92D04F' }} />;
-      case 'Droplets': return <Droplets size={22} style={{ color: '#6FA240' }} />;
-      case 'Clock': return <Clock size={22} style={{ color: '#92D04F' }} />;
-      case 'Layers': return <Layers size={22} style={{ color: '#6FA240' }} />;
-      case 'Ruler': return <Ruler size={22} style={{ color: '#92D04F' }} />;
-      case 'Sun': return <Sun size={22} style={{ color: '#6FA240' }} />;
-      case 'Shield': return <Shield size={22} style={{ color: '#92D04F' }} />;
-      case 'VolumeX': return <VolumeX size={22} style={{ color: '#6FA240' }} />;
-      case 'Zap': return <Zap size={22} style={{ color: '#92D04F' }} />;
-      case 'Truck': return <Truck size={22} style={{ color: '#6FA240' }} />;
-      case 'CheckSquare': return <CheckSquare size={22} style={{ color: '#92D04F' }} />;
-      case 'Users': return <Users size={22} style={{ color: '#6FA240' }} />;
-      default: return <CheckCircle size={22} style={{ color: '#92D04F' }} />;
-    }
-  };
-
   return (
-    <div className="service-detail-page" style={{ backgroundColor: 'var(--bg-primary)' }}>
-      
-      {/* 1. Breadcrumb & Back Navigation Bar */}
-      <div style={{
-        backgroundColor: '#F2F5EF',
-        borderBottom: '1px solid var(--border-dark)',
-        padding: '0.9rem 0'
-      }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem' }}>
-            <button
-              onClick={onBackToServices}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: '#6FA240',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                fontWeight: 700,
-                padding: 0
-              }}
-            >
-              <ArrowLeft size={16} />
-              <span>Back to Services</span>
-            </button>
-            <span style={{ color: 'var(--text-muted)' }}>/</span>
-            <span style={{ color: 'var(--text-muted)' }}>Services Overview</span>
-            <span style={{ color: 'var(--text-muted)' }}>/</span>
-            <span style={{ color: '#232623', fontWeight: 600 }}>{service.title}</span>
-          </div>
+    <div className="service-detail-page">
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-            <span className="mono-tag green" style={{ fontSize: '0.7rem' }}>
-              <span>{COMPANY_INFO.licenseText}</span>
-            </span>
-          </div>
+      {/* ---------- Breadcrumb ---------- */}
+      <div style={{ backgroundColor: '#F5F7F3', borderBottom: '1px solid #E6E9E2', padding: '0.85rem 0' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: '#7C7C7D', flexWrap: 'wrap' }}>
+          <button
+            onClick={onBackToServices}
+            style={{ background: 'none', border: 'none', color: '#6FA240', cursor: 'pointer', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.35rem', padding: 0, fontFamily: 'inherit' }}
+          >
+            <ArrowLeft size={14} /> Services
+          </button>
+          <ChevronRight size={13} />
+          <span style={{ color: '#232623', fontWeight: 600 }}>{service.title}</span>
         </div>
       </div>
 
-      {/* 2. Hero Detail Header */}
+      {/* ============================================================
+          HERO — dark banner with real photo
+          ============================================================ */}
       <section style={{
-        padding: '4.5rem 0',
-        borderBottom: '1px solid #BEC6B9',
-        backgroundColor: '#FCFDFA',
-        position: 'relative'
+        position: 'relative',
+        padding: '4.5rem 0 4rem',
+        backgroundImage: `linear-gradient(rgba(20, 24, 22, 0.78), rgba(20, 24, 22, 0.72)), url('${service.heroImage}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        color: '#FFFFFF'
       }}>
         <div className="container">
-          <div className="arch-grid" style={{ alignItems: 'center' }}>
-            
-            <div style={{ gridColumn: 'span 7' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
-                <span className="mono-tag terracotta">SERVICE DETAIL: {service.category.toUpperCase()}</span>
-                <span className="mono-tag dark">SABS 1215 SPECIFICATION</span>
-              </div>
-
-              <h1 style={{ fontSize: '3.4rem', color: '#232623', marginBottom: '1.25rem', lineHeight: 1.12 }}>
-                {service.title}
-              </h1>
-
-              <p style={{ fontSize: '1.18rem', color: 'var(--text-main)', marginBottom: '2.25rem', lineHeight: 1.65, fontWeight: 500 }}>
-                {service.tagline}
-              </p>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <button
-                  onClick={() => onOpenQuote(service.id)}
-                  className="btn btn-primary"
-                  style={{ padding: '1rem 2.25rem', fontSize: '1rem' }}
-                >
-                  <FileText size={18} />
-                  <span>Request Engineering Quote</span>
-                </button>
-                <a
-                  href={`tel:${COMPANY_INFO.phoneClean}`}
-                  className="btn btn-outline-dark"
-                  style={{ padding: '1rem 1.75rem', fontSize: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-                >
-                  <Phone size={18} style={{ color: '#92D04F' }} />
-                  <span>Call {COMPANY_INFO.phone}</span>
-                </a>
-              </div>
+          <div style={{ maxWidth: '820px' }}>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+              padding: '0.35rem 0.9rem',
+              backgroundColor: 'rgba(146, 208, 79, 0.18)',
+              border: '1px solid rgba(146, 208, 79, 0.4)',
+              borderRadius: '999px',
+              fontSize: '0.75rem', fontWeight: 700, color: '#C8E9A3',
+              marginBottom: '1.25rem', letterSpacing: '0.08em', textTransform: 'uppercase'
+            }}>
+              {service.category}
             </div>
+            <h1 style={{
+              fontSize: 'clamp(2rem, 4.5vw, 3.3rem)', lineHeight: 1.1, fontWeight: 700,
+              margin: '0 0 1rem', letterSpacing: '-0.015em', color: '#FFFFFF'
+            }}>
+              {service.title}
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '1.1rem', maxWidth: '640px', margin: '0 0 1.75rem', lineHeight: 1.55 }}>
+              {service.tagline}
+            </p>
 
-            {/* Right Hero Visual */}
-            <div style={{ gridColumn: 'span 5' }}>
-              <div style={{
-                borderRadius: '4px',
-                overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.15)',
-                boxShadow: '0 30px 60px rgba(0,0,0,0.6)',
-                position: 'relative'
-              }}>
-                <img
-                  src={service.heroImage}
-                  alt={service.title}
-                  style={{ width: '100%', height: '380px', objectFit: 'cover' }}
-                />
-                <div style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  backgroundColor: 'rgba(20, 21, 21, 0.9)',
-                  padding: '1rem 1.25rem',
-                  borderTop: '1px solid var(--border-dark)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between'
-                }}>
-                  <div style={{ fontSize: '0.85rem', color: '#FFF', fontWeight: 600 }}>
-                    {service.category} • SABS Quality Guaranteed
-                  </div>
-                  <span className="mono-tag green" style={{ fontSize: '0.65rem' }}>LICENSED MFG</span>
-                </div>
-              </div>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => onOpenQuote(service.id)}
+                style={{
+                  backgroundColor: '#92D04F', color: '#141816', border: 'none',
+                  padding: '0.85rem 1.5rem', borderRadius: '4px',
+                  fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                  cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+                }}
+              >
+                <FileText size={16} /> Quote this
+              </button>
+              <a
+                href={`tel:${COMPANY_INFO.phoneClean}`}
+                style={{
+                  backgroundColor: 'transparent', color: '#FFFFFF',
+                  border: '2px solid rgba(255,255,255,0.4)',
+                  padding: '0.75rem 1.5rem', borderRadius: '4px',
+                  fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+                }}
+              >
+                <Phone size={16} /> {COMPANY_INFO.phone}
+              </a>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* 3. Main Detailed Content Grid */}
-      <section style={{ padding: '5.5rem 0' }}>
+      {/* ============================================================
+          OVERVIEW + APPLICATIONS
+          ============================================================ */}
+      <section style={{ padding: '4rem 0', backgroundColor: '#FCFDFA' }}>
         <div className="container">
-          <div className="arch-grid">
-            
-            {/* Left 8 Columns: Full Description, Applications, Benefits, Specifications, Interactive Diagram, and Case Study */}
-            <div style={{ gridColumn: 'span 8', display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-              
-              {/* Service Description */}
-              <div>
-                <div className="mono-tag dark" style={{ marginBottom: '0.6rem' }}>
-                  <span>ENGINEERING OVERVIEW</span>
-                </div>
-                <h2 style={{ fontSize: '2.2rem', color: '#FFFFFF', marginBottom: '1.25rem' }}>
-                  Structural & Environmental Excellence
-                </h2>
-                <div style={{ color: 'var(--text-main)', fontSize: '1.05rem', lineHeight: 1.8, whiteSpace: 'pre-line' }}>
-                  {service.fullDesc}
-                </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '3rem' }} className="detail-two-col">
+            <div>
+              <div style={{ fontSize: '0.75rem', color: '#6FA240', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                Overview
               </div>
-
-              {/* 4 Icon-Backed Key Benefits */}
-              <div>
-                <div className="mono-tag terracotta" style={{ marginBottom: '0.6rem' }}>
-                  <span>KEY ADVANTAGES</span>
-                </div>
-                <h3 style={{ fontSize: '2rem', color: '#FFFFFF', marginBottom: '1.5rem' }}>
-                  Why Engineers & Contractors Specify This System
-                </h3>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
-                  {service.benefits.map((benefit, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        backgroundColor: 'var(--bg-surface)',
-                        border: '1px solid var(--border-dark)',
-                        padding: '1.5rem',
-                        borderRadius: '4px'
-                      }}
-                    >
-                      <div style={{
-                        width: '44px',
-                        height: '44px',
-                        borderRadius: '3px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid var(--border-dark)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '1rem'
-                      }}>
-                        {renderBenefitIcon(benefit.iconName)}
-                      </div>
-                      <h4 style={{ fontSize: '1.15rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>
-                        {benefit.title}
-                      </h4>
-                      <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', margin: 0, lineHeight: 1.6 }}>
-                        {benefit.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Interactive Technical Diagram Viewer */}
-              <div>
-                <BlockDiagramViewer
-                  title={`${service.title} — Cross-Section Engineering`}
-                  subtitle="Interactive structural layer inspection"
-                  points={service.diagramPoints}
-                  imageSrc={service.heroImage}
-                />
-              </div>
-
-              {/* SABS Technical Specifications Table */}
-              <div>
-                <div className="mono-tag dark" style={{ marginBottom: '0.6rem' }}>
-                  <span>TECHNICAL SCHEDULE</span>
-                </div>
-                <h3 style={{ fontSize: '2rem', color: '#FFFFFF', marginBottom: '1.25rem' }}>
-                  Engineering Specifications
-                </h3>
-
-                <div style={{
-                  backgroundColor: 'var(--bg-surface)',
-                  border: '1px solid var(--border-dark)',
-                  borderRadius: '4px',
-                  overflow: 'hidden'
-                }}>
-                  <table className="spec-table">
-                    <thead>
-                      <tr>
-                        <th style={{ width: '40%' }}>SPECIFICATION PARAMETER</th>
-                        <th>CERTIFIED VALUE / COMPLIANCE</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {service.specifications.map((item, i) => (
-                        <tr key={i}>
-                          <td style={{ fontWeight: 600, color: 'var(--text-muted)' }}>{item.label}</td>
-                          <td style={{ fontWeight: 700, color: '#FFFFFF' }}>{item.value}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Applications List */}
-              <div>
-                <div className="mono-tag green" style={{ marginBottom: '0.6rem' }}>
-                  <span>PRIMARY APPLICATIONS</span>
-                </div>
-                <h3 style={{ fontSize: '2rem', color: '#FFFFFF', marginBottom: '1.25rem' }}>
-                  Where This Service Is Deployed
-                </h3>
-
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '1rem'
-                }}>
-                  {service.applications.map((app, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        backgroundColor: '#F2F5EF',
-                        border: '1px solid #BEC6B9',
-                        padding: '1.1rem 1.25rem',
-                        borderRadius: '6px',
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '0.75rem'
-                      }}
-                    >
-                      <CheckCircle size={18} style={{ color: '#92D04F', marginTop: '2px', flexShrink: 0 }} />
-                      <span style={{ color: '#232623', fontWeight: 600, fontSize: '0.95rem' }}>{app}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Dedicated Photo Gallery for this Service */}
-              {service.galleryImages && service.galleryImages.length > 0 && (
-                <div>
-                  <div className="mono-tag green" style={{ marginBottom: '0.6rem' }}>
-                    <span>REAL PROJECT GALLERY</span>
-                  </div>
-                  <h3 style={{ fontSize: '2rem', color: '#232623', marginBottom: '1.25rem' }}>
-                    Licensed Installations in the Field
-                  </h3>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                    gap: '1.25rem',
-                    marginBottom: '2.5rem'
-                  }}>
-                    {service.galleryImages.map((img, idx) => (
-                      <div
-                        key={idx}
-                        style={{
-                          backgroundColor: 'var(--bg-surface)',
-                          border: '1px solid var(--border-dark)',
-                          borderRadius: '4px',
-                          overflow: 'hidden',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          boxShadow: '0 12px 30px rgba(0,0,0,0.3)'
-                        }}
-                      >
-                        <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
-                          <img
-                            src={img.url}
-                            alt={img.caption}
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'cover',
-                              transition: 'transform 0.4s ease'
-                            }}
-                            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
-                            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                          />
-                          <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem' }}>
-                            <span className="mono-tag dark" style={{ fontSize: '0.68rem', padding: '0.2rem 0.5rem' }}>
-                              {img.tag}
-                            </span>
-                          </div>
-                        </div>
-                        <div style={{ padding: '1rem', flex: 1, display: 'flex', alignItems: 'center' }}>
-                          <p style={{ margin: 0, color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: 600, lineHeight: 1.4 }}>
-                            {img.caption}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Special Featured Case Study for Terraforce Retaining Walls! */}
-              {service.id === 'terraforce-retaining-walls' && (
-                <div>
-                  <div className="mono-tag terracotta" style={{ marginBottom: '0.6rem' }}>
-                    <span>LICENSED CASE STUDIES SHOWCASE</span>
-                  </div>
-                  <h3 style={{ fontSize: '2rem', color: '#FFFFFF', marginBottom: '1.5rem' }}>
-                    Flagship Projects & Engineering Reference
-                  </h3>
-                  <CaseStudyCard
-                    onOpenQuote={() => onOpenQuote(service.id)}
-                    variant="service-detail"
-                  />
-                </div>
-              )}
-
-              {/* FAQ Accordion for this Service */}
-              {service.faq && service.faq.length > 0 && (
-                <div>
-                  <div className="mono-tag dark" style={{ marginBottom: '0.6rem' }}>
-                    <span>ENGINEERING FAQ</span>
-                  </div>
-                  <h3 style={{ fontSize: '2rem', color: '#FFFFFF', marginBottom: '1.5rem' }}>
-                    Frequently Asked Technical Questions
-                  </h3>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    {service.faq.map((item, idx) => (
-                      <div
-                        key={idx}
-                        style={{
-                          backgroundColor: 'var(--bg-surface)',
-                          border: '1px solid var(--border-dark)',
-                          padding: '1.5rem 1.75rem',
-                          borderRadius: '4px'
-                        }}
-                      >
-                        <h4 style={{ fontSize: '1.15rem', color: '#232623', marginBottom: '0.6rem', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                          <HelpCircle size={18} style={{ color: '#92D04F', marginTop: '2px', flexShrink: 0 }} />
-                          <span>{item.q}</span>
-                        </h4>
-                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', margin: 0, paddingLeft: '1.75rem', lineHeight: 1.6 }}>
-                          {item.a}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
+              <h2 style={{ fontSize: '1.85rem', color: '#232623', margin: '0 0 1.25rem' }}>
+                What this service covers
+              </h2>
+              {service.fullDesc.split('\n\n').map((para, i) => (
+                <p key={i} style={{ color: '#2D312E', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+                  {para.trim()}
+                </p>
+              ))}
             </div>
 
-            {/* Right 4 Columns: Sticky Sidebar with Quote Trigger, Contact Elza, and Switch to Other Services */}
-            <div style={{ gridColumn: 'span 4' }}>
-              <div style={{
-                position: 'sticky',
-                top: '95px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '2rem'
+            <aside style={{
+              backgroundColor: '#F5F7F3',
+              border: '1px solid #E6E9E2',
+              borderRadius: '6px',
+              padding: '1.75rem'
+            }}>
+              <div style={{ fontSize: '0.75rem', color: '#6FA240', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                Typical applications
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                {service.applications.map((a, i) => (
+                  <li key={i} style={{ display: 'flex', gap: '0.55rem', fontSize: '0.92rem', color: '#2D312E', lineHeight: 1.5 }}>
+                    <CheckCircle size={16} style={{ color: '#92D04F', flexShrink: 0, marginTop: '3px' }} />
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          BENEFITS
+          ============================================================ */}
+      <section style={{ padding: '4rem 0', backgroundColor: '#F5F7F3', borderTop: '1px solid #E6E9E2', borderBottom: '1px solid #E6E9E2' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto 2.5rem' }}>
+            <div style={{ fontSize: '0.75rem', color: '#6FA240', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+              Why this works
+            </div>
+            <h2 style={{ fontSize: '2rem', margin: 0, color: '#232623' }}>What you get</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+            {service.benefits.map((b, i) => (
+              <div key={i} style={{
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E6E9E2',
+                borderRadius: '6px',
+                padding: '1.5rem'
               }}>
-                
-                {/* Instant Quote Sidebar Card */}
                 <div style={{
-                  backgroundColor: 'var(--bg-surface)',
-                  border: '1px solid rgba(184, 93, 59, 0.5)',
-                  borderRadius: '4px',
-                  padding: '2rem',
-                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)'
+                  width: '44px', height: '44px', borderRadius: '4px',
+                  backgroundColor: '#EEF6E3',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  marginBottom: '1rem'
                 }}>
-                  <div className="mono-tag terracotta" style={{ marginBottom: '0.8rem' }}>
-                    <span>DIRECT QUOTE SERVICE</span>
-                  </div>
-                  <h3 style={{ fontSize: '1.55rem', color: '#FFFFFF', marginBottom: '0.6rem' }}>
-                    Specify {service.title}
-                  </h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
-                    Need SABS compliance certificates, block meterage estimates, or turnkey site installation? Get a direct response from Elza Liebenberg.
-                  </p>
-
-                  <button
-                    onClick={() => onOpenQuote(service.id)}
-                    className="btn btn-primary"
-                    style={{ width: '100%', padding: '0.95rem', marginBottom: '1rem', fontSize: '0.95rem' }}
-                  >
-                    <FileText size={17} />
-                    <span>Request Quotation</span>
-                  </button>
-
-                  <div style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid var(--border-dark)',
-                    padding: '1rem',
-                    borderRadius: '3px',
-                    fontSize: '0.82rem'
-                  }}>
-                    <div style={{ color: 'var(--text-muted)', marginBottom: '0.3rem' }}>DIRECT CONTACT NUMBER:</div>
-                    <a 
-                      href={`tel:${COMPANY_INFO.phoneClean}`}
-                      style={{ color: '#232623', fontWeight: 700, textDecoration: 'none', fontSize: '1.05rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-                    >
-                      <Phone size={16} style={{ color: '#92D04F' }} />
-                      <span>{COMPANY_INFO.phone}</span>
-                    </a>
-                    <div style={{ color: 'var(--text-muted)', marginTop: '0.4rem' }}>
-                      {COMPANY_INFO.emailPrimary}
-                    </div>
-                  </div>
+                  {renderBenefitIcon(b.iconName)}
                 </div>
-
-                {/* Terraforce License & Free State Footprint Card */}
-                <div style={{
-                  backgroundColor: '#F2F5EF',
-                  border: '1px solid #BEC6B9',
-                  borderRadius: '6px',
-                  padding: '1.5rem',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '1rem'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#79D1A5', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.6rem' }}>
-                    <ShieldCheck size={17} />
-                    <span>OFFICIAL MANUFACTURING LICENSE</span>
-                  </div>
-                  <p style={{ color: '#EBEBE6', fontSize: '0.88rem', margin: 0, lineHeight: 1.5 }}>
-                    {COMPANY_INFO.licenseText}. We serve the Free State, Northern Cape, Western Cape border, Lesotho, and central South Africa.
-                  </p>
-                </div>
-
-                {/* Other 4 Expandable Service Links */}
-                <div style={{
-                  backgroundColor: 'var(--bg-surface)',
-                  border: '1px solid var(--border-dark)',
-                  borderRadius: '4px',
-                  padding: '1.75rem'
-                }}>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginBottom: '1rem', textTransform: 'uppercase' }}>
-                    EXPLORE OTHER SERVICES:
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    {otherServices.map((o) => (
-                      <div
-                        key={o.id}
-                        onClick={() => onSelectService(o.id)}
-                        style={{
-                          padding: '0.8rem 1rem',
-                          backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                          border: '1px solid var(--border-dark)',
-                          borderRadius: '3px',
-                          cursor: 'pointer',
-                          transition: 'all 0.15s',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between'
-                        }}
-                      >
-                        <div>
-                          <div style={{ fontWeight: 600, color: '#232623', fontSize: '0.92rem' }}>{o.title}</div>
-                          <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{o.category}</div>
-                        </div>
-                        <ArrowLeft size={15} style={{ transform: 'rotate(180deg)', color: '#92D04F' }} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
+                <h3 style={{ fontSize: '1.05rem', color: '#232623', margin: '0 0 0.4rem' }}>{b.title}</h3>
+                <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: 1.55, margin: 0 }}>{b.desc}</p>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* ============================================================
+          SPECIFICATIONS
+          ============================================================ */}
+      <section style={{ padding: '4rem 0', backgroundColor: '#FCFDFA' }}>
+        <div className="container">
+          <div style={{ marginBottom: '2rem' }}>
+            <div style={{ fontSize: '0.75rem', color: '#6FA240', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+              Detail
+            </div>
+            <h2 style={{ fontSize: '2rem', color: '#232623', margin: 0 }}>Specifications</h2>
+          </div>
+          <div style={{
+            backgroundColor: '#F5F7F3',
+            border: '1px solid #E6E9E2',
+            borderRadius: '6px',
+            overflow: 'hidden'
+          }}>
+            {service.specifications.map((spec, i) => (
+              <div key={i} style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 2fr',
+                padding: '0.9rem 1.25rem',
+                borderBottom: i < service.specifications.length - 1 ? '1px solid #E6E9E2' : 'none',
+                gap: '1rem',
+                alignItems: 'center'
+              }}>
+                <div style={{ fontSize: '0.82rem', color: '#7C7C7D', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700 }}>
+                  {spec.label}
+                </div>
+                <div style={{ fontSize: '0.98rem', color: '#232623', fontWeight: 600 }}>
+                  {spec.value}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          GALLERY
+          ============================================================ */}
+      {service.galleryImages && service.galleryImages.length > 0 && (
+        <section style={{ padding: '4rem 0', backgroundColor: '#F5F7F3', borderTop: '1px solid #E6E9E2' }}>
+          <div className="container">
+            <div style={{ marginBottom: '2rem' }}>
+              <div style={{ fontSize: '0.75rem', color: '#6FA240', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                From the yard &amp; site
+              </div>
+              <h2 style={{ fontSize: '2rem', color: '#232623', margin: 0 }}>Real installations</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.85rem' }}>
+              {service.galleryImages.map((g, i) => (
+                <div key={i} style={{
+                  position: 'relative',
+                  aspectRatio: '4/3',
+                  overflow: 'hidden',
+                  borderRadius: '6px',
+                  border: '1px solid #E6E9E2'
+                }}>
+                  <img src={g.url} alt={g.caption} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <div style={{
+                    position: 'absolute', left: 0, right: 0, bottom: 0,
+                    background: 'linear-gradient(transparent, rgba(20,24,22,0.8))',
+                    color: '#FFFFFF', padding: '1.5rem 0.85rem 0.7rem'
+                  }}>
+                    <div style={{ fontSize: '0.68rem', letterSpacing: '0.08em', color: '#C8E9A3', fontWeight: 700, textTransform: 'uppercase' }}>{g.tag}</div>
+                    <div style={{ fontSize: '0.82rem', fontWeight: 600 }}>{g.caption}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============================================================
+          FAQ
+          ============================================================ */}
+      {service.faq && service.faq.length > 0 && (
+        <section style={{ padding: '4rem 0', backgroundColor: '#FCFDFA' }}>
+          <div className="container">
+            <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+              <HelpCircle size={24} style={{ color: '#6FA240' }} />
+              <h2 style={{ fontSize: '2rem', color: '#232623', margin: 0 }}>Frequently asked</h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              {service.faq.map((f, i) => (
+                <div key={i} style={{
+                  backgroundColor: '#F5F7F3',
+                  border: '1px solid #E6E9E2',
+                  borderRadius: '6px',
+                  padding: '1.25rem 1.5rem'
+                }}>
+                  <div style={{ fontSize: '1rem', fontWeight: 700, color: '#232623', marginBottom: '0.5rem' }}>
+                    {f.q}
+                  </div>
+                  <div style={{ fontSize: '0.92rem', color: '#555', lineHeight: 1.6 }}>
+                    {f.a}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============================================================
+          OTHER SERVICES
+          ============================================================ */}
+      <section style={{ padding: '4rem 0', backgroundColor: '#F5F7F3', borderTop: '1px solid #E6E9E2' }}>
+        <div className="container">
+          <div style={{ marginBottom: '2rem' }}>
+            <div style={{ fontSize: '0.75rem', color: '#6FA240', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+              Also from Ecocrete
+            </div>
+            <h2 style={{ fontSize: '2rem', color: '#232623', margin: 0 }}>Other services</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+            {otherServices.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => onSelectService(s.id)}
+                style={{
+                  textAlign: 'left', padding: '1.25rem',
+                  backgroundColor: '#FFFFFF', border: '1px solid #E6E9E2', borderRadius: '6px',
+                  cursor: 'pointer', fontFamily: 'inherit', color: 'inherit',
+                  transition: 'border-color 0.15s, transform 0.15s'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#92D04F'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E6E9E2'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              >
+                <div style={{ fontSize: '0.7rem', color: '#6FA240', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+                  {s.category}
+                </div>
+                <h3 style={{ fontSize: '1.15rem', color: '#232623', margin: '0 0 0.45rem' }}>{s.title}</h3>
+                <p style={{ fontSize: '0.88rem', color: '#7C7C7D', lineHeight: 1.5, margin: '0 0 0.85rem' }}>
+                  {s.shortDesc}
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#6FA240', fontWeight: 700, fontSize: '0.85rem' }}>
+                  See detail <ArrowRight size={14} />
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================
+          BOTTOM CTA
+          ============================================================ */}
+      <section style={{ padding: '3.5rem 0', backgroundColor: '#141816', color: '#FFFFFF' }}>
+        <div className="container" style={{ display: 'flex', gap: '2rem', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+          <div style={{ maxWidth: '620px' }}>
+            <h2 style={{ fontSize: '1.7rem', margin: '0 0 0.4rem', color: '#FFFFFF' }}>Ready to talk about {service.title.toLowerCase()}?</h2>
+            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', margin: 0, lineHeight: 1.55 }}>
+              Send us the site details or WhatsApp a photo to {COMPANY_INFO.phone} — we&apos;ll come back with a quote.
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <button
+              onClick={() => onOpenQuote(service.id)}
+              style={{
+                backgroundColor: '#92D04F', color: '#141816', border: 'none',
+                padding: '0.85rem 1.5rem', borderRadius: '4px',
+                fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+              }}
+            >
+              <FileText size={16} /> Quote this service
+            </button>
+            <a
+              href={`tel:${COMPANY_INFO.landlineClean}`}
+              style={{
+                backgroundColor: 'transparent', color: '#FFFFFF',
+                border: '2px solid rgba(255,255,255,0.35)',
+                padding: '0.75rem 1.5rem', borderRadius: '4px',
+                fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                textDecoration: 'none',
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+              }}
+            >
+              <Phone size={16} /> Yard {COMPANY_INFO.landline}
+            </a>
           </div>
         </div>
       </section>
 
       <style>{`
-        @media (max-width: 900px) {
-          .arch-grid > div {
-            grid-column: span 12 !important;
-          }
+        @media (max-width: 780px) {
+          .detail-two-col { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>

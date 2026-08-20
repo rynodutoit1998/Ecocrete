@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  Send, 
-  CheckCircle, 
-  ShieldCheck
-} from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import { COMPANY_INFO, SERVICES_DATA } from '../data/ecocreteData';
 
 export const ContactPage: React.FC = () => {
@@ -19,7 +11,7 @@ export const ContactPage: React.FC = () => {
     email: '',
     phone: '',
     townLocation: '',
-    projectType: 'terraforce-retaining-walls',
+    projectType: SERVICES_DATA[0]?.id ?? 'walling',
     meterage: '',
     requireInstallation: 'yes',
     message: ''
@@ -38,565 +30,343 @@ export const ContactPage: React.FC = () => {
     }, 700);
   };
 
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    padding: '0.7rem 0.85rem',
+    backgroundColor: '#FFFFFF',
+    border: '1px solid #E6E9E2',
+    borderRadius: '4px',
+    fontSize: '0.95rem',
+    color: '#232623',
+    fontFamily: 'inherit',
+    outline: 'none'
+  };
+
+  const labelStyle: React.CSSProperties = {
+    display: 'block',
+    fontSize: '0.78rem',
+    fontWeight: 700,
+    color: '#4A4E4A',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    marginBottom: '0.4rem'
+  };
+
   return (
-    <div className="contact-page" style={{ backgroundColor: 'var(--bg-primary)' }}>
-      
-      {/* 1. Page Header */}
+    <div className="contact-page">
+
+      {/* ============================================================
+          HERO
+          ============================================================ */}
       <section style={{
-        padding: '5rem 0 3.5rem',
-        backgroundColor: '#0F1010',
-        borderBottom: '1px solid var(--border-dark)'
-      }} className="bg-grid-dark">
-        <div className="container">
-          <div style={{ maxWidth: '820px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '0.8rem' }}>
-              <span className="mono-tag green">DIRECT FACTORY SALES</span>
-              <span className="mono-tag green">{COMPANY_INFO.licenseText}</span>
-            </div>
-
-            <h1 style={{ fontSize: '3.6rem', color: '#FFFFFF', marginBottom: '1.25rem', lineHeight: 1.1 }}>
-              Contact Ecocrete <br />
-              <span style={{ color: '#92D04F' }}>& Site Consultation.</span>
-            </h1>
-
-            <p style={{ color: 'rgba(255, 255, 255, 0.88)', fontSize: '1.14rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-              Have questions about SABS compressive strength, Terraforce® block pricing, or our turnkey installation teams across the Free State and central South Africa? Contact Elza Liebenberg directly or complete the engineering consultation form below.
-            </p>
-
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '1.5rem',
-              backgroundColor: '#F2F5EF',
-              border: '1px solid #BEC6B9',
-              padding: '0.85rem 1.5rem',
-              borderRadius: '6px',
-              flexWrap: 'wrap'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                <Phone size={16} style={{ color: '#92D04F' }} />
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Direct Cell:</span>
-                <a 
-                  href={`tel:${COMPANY_INFO.phoneClean}`} 
-                  style={{ color: '#232623', fontWeight: 700, textDecoration: 'none', fontSize: '1rem' }}
-                >
-                  {COMPANY_INFO.phone} ({COMPANY_INFO.contactPerson})
-                </a>
-              </div>
-              <div style={{ width: '1px', height: '18px', backgroundColor: 'var(--border-dark)' }} />
-              <div style={{ fontSize: '0.85rem', color: '#79D1A5', fontWeight: 600 }}>
-                Emails: {COMPANY_INFO.emailPrimary} | {COMPANY_INFO.emailSecondary}
-              </div>
-            </div>
+        position: 'relative',
+        padding: '4.5rem 0 4rem',
+        backgroundImage: `linear-gradient(rgba(20, 24, 22, 0.78), rgba(20, 24, 22, 0.72)), url('/images/precast-boundary-decorative.jpg')`,
+        backgroundSize: 'cover', backgroundPosition: 'center',
+        color: '#FFFFFF'
+      }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+            padding: '0.35rem 0.9rem',
+            backgroundColor: 'rgba(146, 208, 79, 0.18)',
+            border: '1px solid rgba(146, 208, 79, 0.4)',
+            borderRadius: '999px',
+            fontSize: '0.75rem', fontWeight: 700, color: '#C8E9A3',
+            marginBottom: '1.25rem', letterSpacing: '0.08em', textTransform: 'uppercase'
+          }}>
+            Talk to Ecocrete
           </div>
+          <h1 style={{
+            fontSize: 'clamp(2rem, 4.5vw, 3.3rem)', lineHeight: 1.1, fontWeight: 700,
+            margin: '0 auto 1rem', maxWidth: '820px', letterSpacing: '-0.015em', color: '#FFFFFF'
+          }}>
+            Get a quote.
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '1.05rem', maxWidth: '620px', margin: '0 auto', lineHeight: 1.55 }}>
+            Send us the site details or WhatsApp a photo — we&apos;ll come back with pricing. Small jobs and repairs welcome.
+          </p>
         </div>
       </section>
 
-      {/* 2. Main Contact Grid */}
-      <section style={{ padding: '6rem 0' }}>
+      {/* ============================================================
+          CONTACT INFO + FORM
+          ============================================================ */}
+      <section style={{ padding: '4rem 0 5rem', backgroundColor: '#F5F7F3' }}>
         <div className="container">
-          <div className="arch-grid">
-            
-            {/* Left 5 Columns: Direct Contact Details & Service Area Footprint Card */}
-            <div style={{ gridColumn: 'span 5', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '2rem' }} className="contact-two-col">
+
+            {/* LEFT — Contact cards */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{
-                backgroundColor: 'var(--bg-surface)',
-                border: '1px solid rgba(184, 93, 59, 0.45)',
-                borderRadius: '4px',
-                padding: '2.5rem',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)'
-              }}>
-                <div className="mono-tag terracotta" style={{ marginBottom: '1rem' }}>
-                  <span>PRIMARY SALES CONTACT</span>
-                </div>
-
-                <h2 style={{ fontSize: '2.2rem', color: '#232623', marginBottom: '0.3rem' }}>
-                  {COMPANY_INFO.contactPerson}
-                </h2>
-                <div style={{ color: '#6FA240', fontWeight: 700, fontSize: '0.9rem', marginBottom: '1.75rem', textTransform: 'uppercase' }}>
-                  Managing Director — Ecocrete Free State
-                </div>
-
-                {/* Contact List */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                  
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                    <div style={{
-                      width: '44px',
-                      height: '44px',
-                      borderRadius: '6px',
-                      backgroundColor: '#F2F5EF',
-                      border: '1px solid #BEC6B9',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#92D04F',
-                      flexShrink: 0
-                    }}>
-                      <Phone size={20} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginBottom: '0.2rem' }}>
-                        DIRECT CELL & WHATSAPP
-                      </div>
-                      <a
-                        href={`tel:${COMPANY_INFO.phoneClean}`}
-                        style={{ color: '#232623', fontWeight: 700, fontSize: '1.2rem', textDecoration: 'none', display: 'block' }}
-                      >
-                        {COMPANY_INFO.phone}
-                      </a>
-                      <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-                        Immediate response for quotes and site bookings
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                    <div style={{
-                      width: '44px',
-                      height: '44px',
-                      borderRadius: '6px',
-                      backgroundColor: '#F2F5EF',
-                      border: '1px solid #BEC6B9',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#6FA240',
-                      flexShrink: 0
-                    }}>
-                      <Mail size={20} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginBottom: '0.2rem' }}>
-                        OFFICIAL EMAIL INBOXES
-                      </div>
-                      <a
-                        href={`mailto:${COMPANY_INFO.emailPrimary}`}
-                        style={{ color: '#232623', fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'block', marginBottom: '0.2rem' }}
-                      >
-                        {COMPANY_INFO.emailPrimary}
-                      </a>
-                      <a
-                        href={`mailto:${COMPANY_INFO.emailSecondary}`}
-                        style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textDecoration: 'none', display: 'block' }}
-                      >
-                        {COMPANY_INFO.emailSecondary}
-                      </a>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                    <div style={{
-                      width: '44px',
-                      height: '44px',
-                      borderRadius: '3px',
-                      backgroundColor: 'rgba(46, 83, 65, 0.25)',
-                      border: '1px solid rgba(121, 209, 165, 0.3)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#79D1A5',
-                      flexShrink: 0
-                    }}>
-                      <MapPin size={20} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginBottom: '0.2rem' }}>
-                        FACTORY LOCATION & FOOTPRINT
-                      </div>
-                      <div style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '1rem' }}>
-                        {COMPANY_INFO.location}
-                      </div>
-                      <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-                        Serving: Free State, Northern Cape, Western Cape border, Lesotho & Central SA
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                    <div style={{
-                      width: '44px',
-                      height: '44px',
-                      borderRadius: '3px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid var(--border-dark)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'var(--text-main)',
-                      flexShrink: 0
-                    }}>
-                      <Clock size={20} />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginBottom: '0.2rem' }}>
-                        OPERATING HOURS
-                      </div>
-                      <div style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '0.92rem' }}>
-                        {COMPANY_INFO.hours.weekdays}
-                      </div>
-                      <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-                        {COMPANY_INFO.hours.saturday}
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              {/* License & Installation Banner */}
-              <div style={{
-                backgroundColor: 'rgba(46, 83, 65, 0.18)',
-                border: '1px solid rgba(121, 209, 165, 0.25)',
-                borderRadius: '4px',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E6E9E2',
+                borderRadius: '6px',
                 padding: '1.5rem'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#79D1A5', fontWeight: 700, fontSize: '0.85rem', marginBottom: '0.5rem' }}>
-                  <ShieldCheck size={18} />
-                  <span>OFFICIAL TERRAFORCE® LICENSEE</span>
+                <div style={{ fontSize: '0.72rem', color: '#6FA240', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.35rem' }}>
+                  Sales &amp; site enquiries
                 </div>
-                <p style={{ color: '#EBEBE6', fontSize: '0.9rem', margin: 0, lineHeight: 1.6 }}>
-                  {COMPANY_INFO.licenseText}. We also offer professional turnkey installation services.
-                </p>
+                <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#232623', marginBottom: '0.25rem' }}>
+                  {COMPANY_INFO.contactPerson}
+                </div>
+                <div style={{ fontSize: '0.85rem', color: '#7C7C7D', marginBottom: '1rem' }}>
+                  WhatsApp friendly — send site photos.
+                </div>
+                <a href={`tel:${COMPANY_INFO.phoneClean}`} style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                  textDecoration: 'none', color: '#232623', fontWeight: 700, fontSize: '1.05rem'
+                }}>
+                  <Phone size={18} style={{ color: '#6FA240' }} /> {COMPANY_INFO.phone}
+                </a>
               </div>
 
+              <div style={{
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E6E9E2',
+                borderRadius: '6px',
+                padding: '1.5rem'
+              }}>
+                <div style={{ fontSize: '0.72rem', color: '#6FA240', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.4rem' }}>
+                  Yard
+                </div>
+                <a href={`tel:${COMPANY_INFO.landlineClean}`} style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                  textDecoration: 'none', color: '#232623', fontWeight: 700, fontSize: '1.05rem'
+                }}>
+                  <Phone size={18} style={{ color: '#6FA240' }} /> {COMPANY_INFO.landline}
+                </a>
+                <div style={{ marginTop: '0.6rem', fontSize: '0.85rem', color: '#7C7C7D', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <MapPin size={14} style={{ color: '#6FA240' }} /> {COMPANY_INFO.location}
+                </div>
+              </div>
+
+              <div style={{
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E6E9E2',
+                borderRadius: '6px',
+                padding: '1.5rem'
+              }}>
+                <div style={{ fontSize: '0.72rem', color: '#6FA240', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>
+                  Email
+                </div>
+                <a href={`mailto:${COMPANY_INFO.emailPrimary}`} style={{
+                  display: 'flex', alignItems: 'center', gap: '0.45rem',
+                  textDecoration: 'none', color: '#232623', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.4rem'
+                }}>
+                  <Mail size={16} style={{ color: '#6FA240' }} /> {COMPANY_INFO.emailPrimary}
+                </a>
+                <a href={`mailto:${COMPANY_INFO.emailSecondary}`} style={{
+                  display: 'flex', alignItems: 'center', gap: '0.45rem',
+                  textDecoration: 'none', color: '#7C7C7D', fontSize: '0.9rem'
+                }}>
+                  <Mail size={14} /> {COMPANY_INFO.emailSecondary}
+                </a>
+              </div>
+
+              <div style={{
+                backgroundColor: '#141816',
+                color: '#FFFFFF',
+                border: '1px solid #262B27',
+                borderRadius: '6px',
+                padding: '1.5rem'
+              }}>
+                <div style={{ fontSize: '0.72rem', color: '#92D04F', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>
+                  Yard hours
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.95rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <Clock size={15} style={{ color: '#92D04F' }} /> {COMPANY_INFO.hours.weekdays}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <Clock size={15} style={{ color: '#92D04F' }} /> {COMPANY_INFO.hours.saturday}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'rgba(255,255,255,0.6)' }}>
+                    <Clock size={15} /> {COMPANY_INFO.hours.sunday}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Right 7 Columns: Interactive Consultation Form */}
-            <div style={{ gridColumn: 'span 7' }}>
-              <div style={{
-                backgroundColor: 'var(--bg-surface)',
-                border: '1px solid var(--border-dark)',
-                borderRadius: '4px',
-                padding: '2.5rem 3rem',
-                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.45)'
-              }}>
-                {!submitted ? (
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.6rem' }}>
-                      <span className="mono-tag terracotta">ENGINEERED CONSULTATION FORM</span>
+            {/* RIGHT — Form */}
+            <div style={{
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #E6E9E2',
+              borderRadius: '6px',
+              padding: '2rem'
+            }}>
+              {submitted ? (
+                <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+                  <div style={{
+                    width: '64px', height: '64px', borderRadius: '50%',
+                    backgroundColor: '#EEF6E3', color: '#6FA240',
+                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    marginBottom: '1.25rem'
+                  }}>
+                    <CheckCircle size={32} />
+                  </div>
+                  <h3 style={{ fontSize: '1.55rem', color: '#232623', margin: '0 0 0.6rem' }}>
+                    Thanks, {formData.name || 'there'}.
+                  </h3>
+                  <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.55, marginBottom: '1.75rem' }}>
+                    Your enquiry has been sent to <strong>{COMPANY_INFO.contactPerson}</strong> at the Ecocrete yard.
+                    We&apos;ll come back to you within one working day.
+                  </p>
+                  <div style={{ display: 'inline-flex', flexDirection: 'column', gap: '0.75rem', padding: '1.25rem', backgroundColor: '#F5F7F3', border: '1px solid #E6E9E2', borderRadius: '6px' }}>
+                    <a href={`tel:${COMPANY_INFO.phoneClean}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#232623', fontWeight: 700, textDecoration: 'none', fontSize: '1.05rem' }}>
+                      <Phone size={16} style={{ color: '#6FA240' }} /> {COMPANY_INFO.phone}
+                    </a>
+                    <a href={`mailto:${COMPANY_INFO.emailPrimary}`} style={{ color: '#7C7C7D', textDecoration: 'none', fontSize: '0.9rem' }}>
+                      {COMPANY_INFO.emailPrimary}
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <div style={{ fontSize: '0.72rem', color: '#6FA240', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.4rem' }}>
+                      Send us the details
                     </div>
-
-                    <h2 style={{ fontSize: '2.3rem', color: '#FFFFFF', marginBottom: '0.6rem' }}>
-                      Send Us Your Project Requirements
+                    <h2 style={{ fontSize: '1.5rem', color: '#232623', margin: 0 }}>
+                      Tell us about your site
                     </h2>
-
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '2rem' }}>
-                      Tell us about your retaining wall or structural precast project. Our Free State sales engineering team will respond within 24 working hours.
-                    </p>
-
-                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                      
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
-                        <div>
-                          <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                            FULL NAME *
-                          </label>
-                          <input
-                            type="text"
-                            name="name"
-                            required
-                            value={formData.name}
-                            onChange={handleChange}
-                            placeholder="Your Name"
-                            style={{
-                              width: '100%',
-                              padding: '0.8rem 1rem',
-                              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                              border: '1px solid var(--border-dark)',
-                              borderRadius: '3px',
-                              color: '#FFF',
-                              fontSize: '0.95rem',
-                              fontFamily: 'var(--font-body)'
-                            }}
-                          />
-                        </div>
-
-                        <div>
-                          <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                            COMPANY OR MUNICIPALITY
-                          </label>
-                          <input
-                            type="text"
-                            name="company"
-                            value={formData.company}
-                            onChange={handleChange}
-                            placeholder="Company Name (Optional)"
-                            style={{
-                              width: '100%',
-                              padding: '0.8rem 1rem',
-                              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                              border: '1px solid var(--border-dark)',
-                              borderRadius: '3px',
-                              color: '#FFF',
-                              fontSize: '0.95rem',
-                              fontFamily: 'var(--font-body)'
-                            }}
-                          />
-                        </div>
-                      </div>
-
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
-                        <div>
-                          <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                            CELL / PHONE NUMBER *
-                          </label>
-                          <input
-                            type="tel"
-                            name="phone"
-                            required
-                            value={formData.phone}
-                            onChange={handleChange}
-                            placeholder="+27 83 000 0000"
-                            style={{
-                              width: '100%',
-                              padding: '0.8rem 1rem',
-                              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                              border: '1px solid var(--border-dark)',
-                              borderRadius: '3px',
-                              color: '#FFF',
-                              fontSize: '0.95rem',
-                              fontFamily: 'var(--font-body)'
-                            }}
-                          />
-                        </div>
-
-                        <div>
-                          <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                            EMAIL ADDRESS *
-                          </label>
-                          <input
-                            type="email"
-                            name="email"
-                            required
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="name@company.co.za"
-                            style={{
-                              width: '100%',
-                              padding: '0.8rem 1rem',
-                              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                              border: '1px solid var(--border-dark)',
-                              borderRadius: '3px',
-                              color: '#FFF',
-                              fontSize: '0.95rem',
-                              fontFamily: 'var(--font-body)'
-                            }}
-                          />
-                        </div>
-                      </div>
-
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
-                        <div>
-                          <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                            SERVICE OF INTEREST
-                          </label>
-                          <select
-                            name="projectType"
-                            value={formData.projectType}
-                            onChange={handleChange}
-                            style={{
-                              width: '100%',
-                              padding: '0.8rem 1rem',
-                              backgroundColor: 'var(--bg-primary)',
-                              border: '1px solid var(--border-dark)',
-                              borderRadius: '3px',
-                              color: '#FFF',
-                              fontSize: '0.95rem',
-                              fontFamily: 'var(--font-body)'
-                            }}
-                          >
-                            {SERVICES_DATA.map((s) => (
-                              <option key={s.id} value={s.id}>{s.title}</option>
-                            ))}
-                            <option value="custom">Other Custom Precast Inquiry</option>
-                          </select>
-                        </div>
-
-                        <div>
-                          <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                            TURNKEY INSTALLATION NEEDED?
-                          </label>
-                          <select
-                            name="requireInstallation"
-                            value={formData.requireInstallation}
-                            onChange={handleChange}
-                            style={{
-                              width: '100%',
-                              padding: '0.8rem 1rem',
-                              backgroundColor: 'var(--bg-primary)',
-                              border: '1px solid var(--border-dark)',
-                              borderRadius: '3px',
-                              color: '#FFF',
-                              fontSize: '0.95rem',
-                              fontFamily: 'var(--font-body)'
-                            }}
-                          >
-                            <option value="yes">Yes — Include Turnkey Installation</option>
-                            <option value="no">No — Supply & Delivery Only</option>
-                            <option value="consult">Unsure — Need Engineer Assessment</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
-                        <div>
-                          <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                            SITE TOWN / LOCATION
-                          </label>
-                          <input
-                            type="text"
-                            name="townLocation"
-                            value={formData.townLocation}
-                            onChange={handleChange}
-                            placeholder="e.g. Bloemfontein / Caledon / Welkom"
-                            style={{
-                              width: '100%',
-                              padding: '0.8rem 1rem',
-                              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                              border: '1px solid var(--border-dark)',
-                              borderRadius: '3px',
-                              color: '#FFF',
-                              fontSize: '0.95rem',
-                              fontFamily: 'var(--font-body)'
-                            }}
-                          />
-                        </div>
-
-                        <div>
-                          <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                            ESTIMATED METERAGE / SIZE
-                          </label>
-                          <input
-                            type="text"
-                            name="meterage"
-                            value={formData.meterage}
-                            onChange={handleChange}
-                            placeholder="e.g. 150 m² wall / 20 linear meters"
-                            style={{
-                              width: '100%',
-                              padding: '0.8rem 1rem',
-                              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                              border: '1px solid var(--border-dark)',
-                              borderRadius: '3px',
-                              color: '#FFF',
-                              fontSize: '0.95rem',
-                              fontFamily: 'var(--font-body)'
-                            }}
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#FFF', marginBottom: '0.4rem' }}>
-                          PROJECT DETAILS & SPECIFICATIONS
-                        </label>
-                        <textarea
-                          name="message"
-                          rows={4}
-                          value={formData.message}
-                          onChange={handleChange}
-                          placeholder="Describe soil conditions, height requirements, vygies planting preferences, or timeline..."
-                          style={{
-                            width: '100%',
-                            padding: '0.8rem 1rem',
-                            backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                            border: '1px solid var(--border-dark)',
-                            borderRadius: '3px',
-                            color: '#FFF',
-                            fontSize: '0.95rem',
-                            fontFamily: 'var(--font-body)'
-                          }}
-                        />
-                      </div>
-
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-                        paddingTop: '1.25rem',
-                        flexWrap: 'wrap',
-                        gap: '1rem'
-                      }}>
-                        <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                          Directly sent to: <strong style={{ color: '#FFF' }}>{COMPANY_INFO.emailPrimary}</strong>
-                        </div>
-                        <button
-                          type="submit"
-                          disabled={loading}
-                          className="btn btn-primary"
-                          style={{ padding: '0.9rem 2.5rem', fontSize: '1rem' }}
-                        >
-                          {loading ? 'Sending Request...' : 'Submit Project Consultation'}
-                          <Send size={16} />
-                        </button>
-                      </div>
-
-                    </form>
                   </div>
-                ) : (
-                  <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
-                    <div style={{
-                      width: '68px',
-                      height: '68px',
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(46, 83, 65, 0.25)',
-                      color: '#79D1A5',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      margin: '0 auto 1.5rem'
-                    }}>
-                      <CheckCircle size={38} />
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }} className="form-two-col">
+                    <div>
+                      <label style={labelStyle}>Name *</label>
+                      <input required name="name" value={formData.name} onChange={handleChange} style={inputStyle} />
                     </div>
-
-                    <h3 style={{ fontSize: '2rem', color: '#232623', marginBottom: '0.8rem' }}>
-                      Consultation Request Sent
-                    </h3>
-
-                    <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
-                      Thank you, <strong style={{ color: '#232623' }}>{formData.name}</strong>. Your project requirements have been forwarded directly to <strong style={{ color: '#6FA240' }}>{COMPANY_INFO.contactPerson}</strong> at Ecocrete Free State.
-                    </p>
-
-                    <div style={{
-                      backgroundColor: '#F2F5EF',
-                      border: '1px solid #BEC6B9',
-                      padding: '1.25rem',
-                      borderRadius: '6px',
-                      maxWidth: '420px',
-                      margin: '0 auto 2rem',
-                      textAlign: 'left'
-                    }}>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>FOR URGENT MATTERS / DIRECT WHATSAPP:</div>
-                      <a 
-                        href={`tel:${COMPANY_INFO.phoneClean}`}
-                        style={{ color: '#232623', fontWeight: 700, fontSize: '1.2rem', textDecoration: 'none', display: 'block', marginBottom: '0.3rem' }}
-                      >
-                        {COMPANY_INFO.phone}
-                      </a>
-                      <div style={{ color: 'var(--text-muted)', fontSize: '0.88rem' }}>
-                        Email: {COMPANY_INFO.emailPrimary} | {COMPANY_INFO.emailSecondary}
-                      </div>
+                    <div>
+                      <label style={labelStyle}>Company / Site</label>
+                      <input name="company" value={formData.company} onChange={handleChange} style={inputStyle} />
                     </div>
-
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="btn btn-outline-dark"
-                      style={{ padding: '0.8rem 2rem' }}
-                    >
-                      Send Another Inquiry
-                    </button>
                   </div>
-                )}
-              </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }} className="form-two-col">
+                    <div>
+                      <label style={labelStyle}>Email *</label>
+                      <input required type="email" name="email" value={formData.email} onChange={handleChange} style={inputStyle} />
+                    </div>
+                    <div>
+                      <label style={labelStyle}>Phone *</label>
+                      <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} style={inputStyle} />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }} className="form-two-col">
+                    <div>
+                      <label style={labelStyle}>Town / Site location</label>
+                      <input name="townLocation" value={formData.townLocation} onChange={handleChange} style={inputStyle} placeholder="e.g. Bloemfontein" />
+                    </div>
+                    <div>
+                      <label style={labelStyle}>Metres (if known)</label>
+                      <input name="meterage" value={formData.meterage} onChange={handleChange} style={inputStyle} placeholder="e.g. 40 m" />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }} className="form-two-col">
+                    <div>
+                      <label style={labelStyle}>Service</label>
+                      <select name="projectType" value={formData.projectType} onChange={handleChange} style={inputStyle}>
+                        {SERVICES_DATA.map((s) => (
+                          <option key={s.id} value={s.id}>{s.title}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label style={labelStyle}>Need install?</label>
+                      <select name="requireInstallation" value={formData.requireInstallation} onChange={handleChange} style={inputStyle}>
+                        <option value="yes">Yes — install by Ecocrete</option>
+                        <option value="no">No — supply only</option>
+                        <option value="unsure">Not sure yet</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <label style={labelStyle}>Tell us about the job</label>
+                    <textarea
+                      name="message" value={formData.message} onChange={handleChange}
+                      rows={5}
+                      style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }}
+                      placeholder="Anything relevant — wall height, slope, existing wall to extend, etc."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    style={{
+                      backgroundColor: '#92D04F', color: '#141816', border: 'none',
+                      padding: '0.95rem 1.6rem', borderRadius: '4px',
+                      fontSize: '0.92rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                      cursor: loading ? 'wait' : 'pointer', width: '100%',
+                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
+                      opacity: loading ? 0.7 : 1
+                    }}
+                  >
+                    {loading ? 'Sending…' : (<><Send size={16} /> Send Enquiry</>)}
+                  </button>
+
+                  <div style={{ marginTop: '1rem', fontSize: '0.82rem', color: '#7C7C7D', textAlign: 'center' }}>
+                    Goes directly to <strong style={{ color: '#232623' }}>{COMPANY_INFO.emailPrimary}</strong>
+                  </div>
+                </form>
+              )}
             </div>
 
           </div>
         </div>
       </section>
 
+      {/* ============================================================
+          BOTTOM CTA
+          ============================================================ */}
+      <section style={{ padding: '3.5rem 0', backgroundColor: '#141816', color: '#FFFFFF' }}>
+        <div className="container" style={{ display: 'flex', gap: '2rem', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+          <div style={{ maxWidth: '620px' }}>
+            <h2 style={{ fontSize: '1.65rem', margin: '0 0 0.4rem', color: '#FFFFFF' }}>Would rather phone?</h2>
+            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.98rem', margin: 0, lineHeight: 1.55 }}>
+              Elza is happy to talk through options over the phone or WhatsApp.
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <a
+              href={`tel:${COMPANY_INFO.phoneClean}`}
+              style={{
+                backgroundColor: '#92D04F', color: '#141816',
+                padding: '0.85rem 1.5rem', borderRadius: '4px',
+                fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                textDecoration: 'none',
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+              }}
+            >
+              <Phone size={16} /> {COMPANY_INFO.phone}
+            </a>
+            <a
+              href={`tel:${COMPANY_INFO.landlineClean}`}
+              style={{
+                backgroundColor: 'transparent', color: '#FFFFFF',
+                border: '2px solid rgba(255,255,255,0.35)',
+                padding: '0.75rem 1.5rem', borderRadius: '4px',
+                fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.03em', textTransform: 'uppercase',
+                textDecoration: 'none',
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem'
+              }}
+            >
+              <Phone size={16} /> Yard {COMPANY_INFO.landline}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <style>{`
+        @media (max-width: 780px) {
+          .contact-two-col { grid-template-columns: 1fr !important; }
+          .form-two-col { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 };

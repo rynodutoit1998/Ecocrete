@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Menu, 
-  X, 
-  ChevronDown, 
-  ArrowRight, 
-  ShieldCheck, 
-  FileText
+import {
+  Phone,
+  Mail,
+  Menu,
+  X,
+  ChevronDown,
+  ArrowRight,
+  FileText,
+  Clock
 } from 'lucide-react';
 import { COMPANY_INFO, SERVICES_DATA } from '../../data/ecocreteData';
 
@@ -18,336 +17,284 @@ interface HeaderProps {
   onOpenQuoteModal: () => void;
 }
 
+type NavId = 'home' | 'services' | 'products' | 'about' | 'contact';
+
+const NAV_ITEMS: { id: NavId; label: string; matches?: string[] }[] = [
+  { id: 'home', label: 'Home' },
+  { id: 'services', label: 'Services', matches: ['services', 'service-detail'] },
+  { id: 'products', label: 'Products' },
+  { id: 'about', label: 'About' },
+  { id: 'contact', label: 'Contact' }
+];
+
 export const Header: React.FC<HeaderProps> = ({
   currentView,
   onNavigate,
-  onOpenQuoteModal,
+  onOpenQuoteModal
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
-  const handleNavClick = (view: 'home' | 'services' | 'products' | 'about' | 'contact', serviceId?: string) => {
+  const isActive = (item: { id: NavId; matches?: string[] }) =>
+    currentView === item.id || (item.matches ?? []).includes(currentView);
+
+  const handleNavClick = (view: NavId, serviceId?: string) => {
     onNavigate(view, serviceId);
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
   };
 
   return (
-    <header className="main-header">
-      {/* Top Contact Bar */}
-      <div className="top-contact-bar">
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+    <header className="main-header" style={{ position: 'sticky', top: 0, zIndex: 100 }}>
+
+      {/* ---------- Top info bar (dark) ---------- */}
+      <div style={{ backgroundColor: '#141816', color: '#E4E7E2', fontSize: '0.82rem' }}>
+        <div className="container" style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1rem',
+          padding: '0.55rem 1.5rem'
+        }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#92D04F' }}>
-              <ShieldCheck size={14} />
-              <strong>{COMPANY_INFO.licenseText}</strong>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+              <Clock size={13} style={{ color: '#92D04F' }} />
+              <span>{COMPANY_INFO.hours.weekdays}</span>
             </span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-              <MapPin size={14} />
-              <span>{COMPANY_INFO.location} • Serving Central South Africa</span>
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <a 
-              href={`tel:${COMPANY_INFO.phoneClean}`} 
-              style={{ color: '#FCFDFA', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600 }}
-            >
-              <Phone size={13} style={{ color: '#92D04F' }} />
-              <span>{COMPANY_INFO.contactPerson}: {COMPANY_INFO.phone}</span>
-            </a>
-            <a 
-              href={`mailto:${COMPANY_INFO.emailPrimary}`} 
-              style={{ color: '#BEC6B9', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-            >
-              <Mail size={13} />
-              <span>{COMPANY_INFO.emailPrimary}</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Architectural Navigation */}
-      <div className="container" style={{ padding: '0.9rem 1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          
-          {/* Logo & Brand Identity */}
-          <div 
-            onClick={() => handleNavClick('home')}
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.85rem', 
-              cursor: 'pointer',
-              userSelect: 'none'
-            }}
-          >
-            <div style={{
-              height: '48px',
-              backgroundColor: '#FCFDFA',
-              border: '1px solid #BEC6B9',
-              borderRadius: '6px',
-              padding: '0.25rem 0.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+            <a href={`tel:${COMPANY_INFO.landlineClean}`} style={{
+              color: '#E4E7E2', textDecoration: 'none',
+              display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600
             }}>
-              <img 
-                src="/images/ecocrete-logo.jpg" 
-                alt="Ecocrete Logo" 
-                style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
-              />
-            </div>
-            <div>
-              <div style={{ 
-                fontFamily: 'var(--font-display)', 
-                fontSize: '1.5rem', 
-                fontWeight: 700, 
-                letterSpacing: '-0.02em',
-                lineHeight: 1,
-                display: 'flex',
-                alignItems: 'center'
-              }}>
-                <span style={{ color: '#7C7C7D' }}>eco</span>
-                <span style={{ color: '#92D04F' }}>crete</span>
-              </div>
-              <div style={{ 
-                fontFamily: 'var(--font-body)', 
-                fontSize: '0.72rem', 
-                color: '#7C7C7D',
-                fontWeight: 500,
-                marginTop: '3px'
-              }}>
-                Your precast concrete product specialist
-              </div>
-            </div>
+              <Phone size={13} style={{ color: '#92D04F' }} />
+              <span>Yard {COMPANY_INFO.landline}</span>
+            </a>
           </div>
-
-          {/* Desktop Navigation Links */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }} className="desktop-nav">
-            <button
-              onClick={() => handleNavClick('home')}
-              className={`nav-link ${currentView === 'home' ? 'active' : ''}`}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.95rem' }}
-            >
-              Home
-            </button>
-
-            {/* Services Dropdown Trigger */}
-            <div 
-              style={{ position: 'relative' }}
-              onMouseEnter={() => setServicesDropdownOpen(true)}
-              onMouseLeave={() => setServicesDropdownOpen(false)}
-            >
-              <button
-                onClick={() => handleNavClick('services')}
-                className={`nav-link ${currentView === 'services' || currentView === 'service-detail' ? 'active' : ''}`}
-                style={{ 
-                  background: 'none', 
-                  border: 'none', 
-                  cursor: 'pointer', 
-                  fontSize: '0.95rem',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem'
-                }}
-              >
-                <span>Services</span>
-                <ChevronDown size={14} style={{ transform: servicesDropdownOpen ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
-              </button>
-
-              {/* Architectural Dropdown Menu */}
-              {servicesDropdownOpen && (
-                <div style={{
-                  position: 'absolute',
-                  top: '100%',
-                  left: 0,
-                  width: '360px',
-                  backgroundColor: '#FCFDFA',
-                  border: '1px solid #BEC6B9',
-                  borderRadius: '6px',
-                  boxShadow: '0 15px 40px rgba(0, 0, 0, 0.12)',
-                  padding: '0.6rem 0',
-                  zIndex: 200
-                }}>
-                  <div style={{ padding: '0.4rem 1rem 0.6rem', borderBottom: '1px solid #BEC6B9', marginBottom: '0.4rem' }}>
-                    <span className="mono-tag terracotta" style={{ fontSize: '0.65rem' }}>
-                      Expandable Service Specs
-                    </span>
-                  </div>
-                  {SERVICES_DATA.map((service) => (
-                    <div
-                      key={service.id}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleNavClick('services', service.id);
-                      }}
-                      style={{
-                        padding: '0.7rem 1.2rem',
-                        cursor: 'pointer',
-                        transition: 'background 0.15s',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '0.2rem',
-                        borderBottom: '1px solid #EBEFE8'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#F2F5EF'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                    >
-                      <div style={{ fontWeight: 600, fontSize: '0.92rem', color: '#232623', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <span>{service.title}</span>
-                        <ArrowRight size={13} style={{ color: '#92D04F' }} />
-                      </div>
-                      <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                        {service.category}
-                      </div>
-                    </div>
-                  ))}
-                  <div 
-                    onClick={() => handleNavClick('services')}
-                    style={{
-                      padding: '0.7rem 1.2rem',
-                      textAlign: 'center',
-                      fontSize: '0.82rem',
-                      fontWeight: 600,
-                      color: '#6FA240',
-                      cursor: 'pointer',
-                      borderTop: '1px solid #BEC6B9'
-                    }}
-                  >
-                    View All 5 Specialized Services →
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <button
-              onClick={() => handleNavClick('products')}
-              className={`nav-link ${currentView === 'products' ? 'active' : ''}`}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-            >
-              <span>Products</span>
-              <span className="mono-tag dark" style={{ fontSize: '0.65rem', padding: '0.15rem 0.4rem' }}>SABS</span>
-            </button>
-
-            <button
-              onClick={() => handleNavClick('about')}
-              className={`nav-link ${currentView === 'about' ? 'active' : ''}`}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.95rem' }}
-            >
-              About Us
-            </button>
-
-            <button
-              onClick={() => handleNavClick('contact')}
-              className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.95rem' }}
-            >
-              Contact
-            </button>
-          </nav>
-
-          {/* Action CTAs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }} className="header-actions">
-            <button
-              onClick={onOpenQuoteModal}
-              className="btn btn-primary"
-              style={{ padding: '0.65rem 1.25rem', fontSize: '0.88rem' }}
-            >
-              <FileText size={15} />
-              <span>Request Quote</span>
-            </button>
-
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }} className="top-bar-right">
             <a
               href={`tel:${COMPANY_INFO.phoneClean}`}
-              className="btn btn-outline-dark"
-              style={{ padding: '0.65rem 1rem', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-              title="Call Elza Liebenberg Direct"
+              style={{ color: '#FFFFFF', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700 }}
             >
-              <Phone size={15} style={{ color: '#92D04F' }} />
-              <span style={{ fontWeight: 700 }}>+27 83 655 6590</span>
+              <Phone size={13} style={{ color: '#92D04F' }} />
+              {COMPANY_INFO.contactPerson}: {COMPANY_INFO.phone}
             </a>
+            <a
+              href={`mailto:${COMPANY_INFO.emailPrimary}`}
+              style={{ color: '#BEC6B9', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+              className="top-bar-email"
+            >
+              <Mail size={13} />
+              {COMPANY_INFO.emailPrimary}
+            </a>
+          </div>
+        </div>
+      </div>
 
-            {/* Mobile Menu Button */}
+      {/* ---------- Main nav (white) ---------- */}
+      <div style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #E6E9E2' }}>
+        <div className="container" style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '0.85rem 1.5rem'
+        }}>
+
+          {/* Logo */}
+          <div
+            onClick={() => handleNavClick('home')}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', cursor: 'pointer', userSelect: 'none' }}
+          >
+            <div style={{
+              height: '46px', width: '46px',
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #E6E9E2',
+              borderRadius: '6px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              overflow: 'hidden'
+            }}>
+              <img src="/images/ecocrete-logo.jpg" alt="Ecocrete" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
+            </div>
+            <div>
+              <div style={{
+                fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 700,
+                letterSpacing: '-0.02em', lineHeight: 1
+              }}>
+                <span style={{ color: '#232623' }}>eco</span>
+                <span style={{ color: '#92D04F' }}>crete</span>
+              </div>
+              <div style={{ fontSize: '0.72rem', color: '#7C7C7D', marginTop: '3px' }}>
+                Your precast &amp; concrete product specialist
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop nav */}
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }} className="desktop-nav">
+            {NAV_ITEMS.map((item) => {
+              const active = isActive(item);
+              const isServices = item.id === 'services';
+
+              if (isServices) {
+                return (
+                  <div
+                    key={item.id}
+                    style={{ position: 'relative' }}
+                    onMouseEnter={() => setServicesDropdownOpen(true)}
+                    onMouseLeave={() => setServicesDropdownOpen(false)}
+                  >
+                    <button
+                      onClick={() => handleNavClick('services')}
+                      className="nav-link-clean"
+                      style={{
+                        background: 'none', border: 'none', cursor: 'pointer',
+                        fontFamily: 'inherit', fontSize: '0.92rem', fontWeight: 600,
+                        color: active ? '#232623' : '#4A4E4A',
+                        padding: '1.4rem 0.9rem 1.35rem',
+                        position: 'relative',
+                        display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
+                        borderBottom: active ? '3px solid #92D04F' : '3px solid transparent',
+                        transition: 'color 0.15s, border-color 0.15s'
+                      }}
+                    >
+                      Services <ChevronDown size={13} style={{ transform: servicesDropdownOpen ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
+                    </button>
+
+                    {servicesDropdownOpen && (
+                      <div style={{
+                        position: 'absolute', top: '100%', left: 0, width: '320px',
+                        backgroundColor: '#FFFFFF', border: '1px solid #E6E9E2',
+                        borderRadius: '6px',
+                        boxShadow: '0 15px 40px rgba(0,0,0,0.10)',
+                        padding: '0.4rem 0', zIndex: 200
+                      }}>
+                        {SERVICES_DATA.map((service) => (
+                          <div
+                            key={service.id}
+                            onClick={(e) => { e.stopPropagation(); handleNavClick('services', service.id); }}
+                            style={{
+                              padding: '0.75rem 1.1rem', cursor: 'pointer',
+                              display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem',
+                              transition: 'background 0.15s'
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#F5F7F3'}
+                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                          >
+                            <div>
+                              <div style={{ fontWeight: 600, fontSize: '0.92rem', color: '#232623' }}>{service.title}</div>
+                              <div style={{ fontSize: '0.76rem', color: '#7C7C7D' }}>{service.category}</div>
+                            </div>
+                            <ArrowRight size={13} style={{ color: '#92D04F', flexShrink: 0 }} />
+                          </div>
+                        ))}
+                        <div
+                          onClick={() => handleNavClick('services')}
+                          style={{
+                            padding: '0.7rem 1.1rem', textAlign: 'center',
+                            fontSize: '0.8rem', fontWeight: 700, color: '#6FA240',
+                            cursor: 'pointer', borderTop: '1px solid #E6E9E2'
+                          }}
+                        >
+                          View all services →
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className="nav-link-clean"
+                  style={{
+                    background: 'none', border: 'none', cursor: 'pointer',
+                    fontFamily: 'inherit', fontSize: '0.92rem', fontWeight: 600,
+                    color: active ? '#232623' : '#4A4E4A',
+                    padding: '1.4rem 0.9rem 1.35rem',
+                    borderBottom: active ? '3px solid #92D04F' : '3px solid transparent',
+                    transition: 'color 0.15s, border-color 0.15s'
+                  }}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Right actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }} className="header-actions">
+            <button
+              onClick={onOpenQuoteModal}
+              style={{
+                backgroundColor: '#92D04F', color: '#141816', border: 'none',
+                padding: '0.7rem 1.35rem', borderRadius: '4px',
+                fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.03em', textTransform: 'uppercase',
+                cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.45rem',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#7ABC3A')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#92D04F')}
+            >
+              <FileText size={15} />
+              Request a Quote
+            </button>
+
+            {/* Mobile toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{
-                background: 'none',
-                border: '1px solid var(--border-dark)',
-                color: '#FFFFFF',
-                padding: '0.5rem',
-                borderRadius: '3px',
-                cursor: 'pointer',
-                display: 'none'
-              }}
               className="mobile-toggle-btn"
-              aria-label="Toggle Navigation Menu"
+              aria-label="Toggle navigation menu"
+              style={{
+                background: 'none', border: '1px solid #E6E9E2',
+                color: '#232623', padding: '0.5rem', borderRadius: '4px',
+                cursor: 'pointer', display: 'none'
+              }}
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* ---------- Mobile drawer ---------- */}
       {mobileMenuOpen && (
         <div style={{
-          backgroundColor: 'var(--bg-surface)',
-          borderBottom: '1px solid var(--border-dark)',
-          padding: '1.25rem 1.5rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.8rem'
+          backgroundColor: '#FFFFFF',
+          borderBottom: '1px solid #E6E9E2',
+          padding: '1rem 1.25rem 1.5rem'
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <button 
-              onClick={() => handleNavClick('home')}
-              style={{ textAlign: 'left', padding: '0.75rem', background: 'none', border: 'none', color: '#FFF', fontSize: '1.1rem', fontWeight: 600, borderBottom: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              1. Home
-            </button>
-            <button 
-              onClick={() => handleNavClick('services')}
-              style={{ textAlign: 'left', padding: '0.75rem', background: 'none', border: 'none', color: '#FFF', fontSize: '1.1rem', fontWeight: 600, borderBottom: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              2. Services & Engineering
-            </button>
-            <button 
-              onClick={() => handleNavClick('products')}
-              style={{ textAlign: 'left', padding: '0.75rem', background: 'none', border: 'none', color: '#FFF', fontSize: '1.1rem', fontWeight: 600, borderBottom: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              3. Products Catalog (SABS)
-            </button>
-            <button 
-              onClick={() => handleNavClick('about')}
-              style={{ textAlign: 'left', padding: '0.75rem', background: 'none', border: 'none', color: '#FFF', fontSize: '1.1rem', fontWeight: 600, borderBottom: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              4. About Ecocrete
-            </button>
-            <button 
-              onClick={() => handleNavClick('contact')}
-              style={{ textAlign: 'left', padding: '0.75rem', background: 'none', border: 'none', color: '#FFF', fontSize: '1.1rem', fontWeight: 600, borderBottom: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              5. Contact & Site Consultation
-            </button>
-          </div>
-
-          <div style={{ marginTop: '0.5rem', padding: '1rem', backgroundColor: '#F2F5EF', border: '1px solid #BEC6B9', borderRadius: '6px' }}>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>DIRECT SALES CONTACT</div>
+          <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                style={{
+                  textAlign: 'left', padding: '0.85rem 0.5rem',
+                  background: 'none', border: 'none', borderBottom: '1px solid #F0F2ED',
+                  color: '#232623', fontSize: '1rem', fontWeight: 600,
+                  cursor: 'pointer', fontFamily: 'inherit'
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+          <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: '#F5F7F3', border: '1px solid #E6E9E2', borderRadius: '6px' }}>
+            <div style={{ fontSize: '0.72rem', color: '#7C7C7D', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.35rem' }}>Direct sales</div>
             <div style={{ fontWeight: 700, color: '#232623', fontSize: '0.95rem' }}>{COMPANY_INFO.contactPerson}</div>
-            <div style={{ fontSize: '0.9rem', color: '#92D04F', fontWeight: 700, margin: '0.2rem 0' }}>{COMPANY_INFO.phone}</div>
-            <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>{COMPANY_INFO.emailPrimary}</div>
+            <a href={`tel:${COMPANY_INFO.phoneClean}`} style={{ fontSize: '0.98rem', color: '#6FA240', fontWeight: 700, textDecoration: 'none', display: 'block', margin: '0.2rem 0' }}>{COMPANY_INFO.phone}</a>
+            <a href={`tel:${COMPANY_INFO.landlineClean}`} style={{ fontSize: '0.85rem', color: '#7C7C7D', textDecoration: 'none' }}>Yard: {COMPANY_INFO.landline}</a>
           </div>
         </div>
       )}
 
-      {/* Inline Responsive Styles for Mobile Toggle */}
       <style>{`
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
           .mobile-toggle-btn { display: inline-flex !important; }
-          .header-actions span { display: none; }
+          .top-bar-email { display: none !important; }
+        }
+        @media (max-width: 640px) {
+          .header-actions button:first-of-type span { display: none; }
         }
       `}</style>
     </header>
