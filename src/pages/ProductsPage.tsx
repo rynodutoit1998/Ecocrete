@@ -7,19 +7,34 @@ interface ProductsPageProps {
   onOpenQuote: (productId?: string) => void;
 }
 
-const CATEGORIES: { id: 'all' | 'walling' | 'terraforce' | 'precast'; label: string; sub?: string }[] = [
+const CATEGORIES: { id: 'all' | 'walling' | 'terraforce' | 'precast' | 'landscaping'; label: string; sub?: string }[] = [
   { id: 'all', label: 'All Products' },
-  { id: 'walling', label: 'Walling', sub: 'Uniquall · Precon' },
+  { id: 'walling', label: 'Walling', sub: 'Uniquall · Precon: Louvred · Between · Sandstone · Global Plain' },
   { id: 'terraforce', label: 'Terraforce®', sub: 'L15 · 4x4 · Step · Bat · Terrafix · Terrapac' },
-  { id: 'precast', label: 'Precast', sub: 'Stepping stones · Pillars · Caps · Copings · Sills · Balls · Waskattie · Kerbs' }
+  { id: 'precast', label: 'Precast', sub: 'Stepping stones · Pillar caps · Copings · Channels · Window sills · Gulleys · Balls · Waskattie · Kerbs · Pillars' },
+  { id: 'landscaping', label: 'Landscaping', sub: 'Outdoor furniture · Braais · Screen blocks · Stepping stones · Pillars · Caps · Copings · Balls · Kerbs' }
 ];
+
+const LANDSCAPING_PRODUCT_IDS = new Set([
+  'prod-step-pyramid-400',
+  'prod-step-pyramid-500',
+  'prod-step-roman',
+  'prod-pillar-cap',
+  'prod-pillar',
+  'prod-coping',
+  'prod-ball',
+  'prod-kerb'
+]);
 
 export const ProductsPage: React.FC<ProductsPageProps> = ({ onOpenSpecSheet, onOpenQuote }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredProducts = PRODUCTS_CATALOG.filter((prod) => {
-    const matchesCategory = activeCategory === 'all' || prod.category === activeCategory;
+    const matchesCategory =
+      activeCategory === 'all' ||
+      prod.category === activeCategory ||
+      (activeCategory === 'landscaping' && LANDSCAPING_PRODUCT_IDS.has(prod.id));
     const q = searchQuery.toLowerCase();
     const matchesSearch =
       prod.name.toLowerCase().includes(q) ||

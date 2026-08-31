@@ -38,7 +38,7 @@ const PRODUCT_FAMILIES = [
     slug: 'precast',
     title: 'Precast',
     tagline: 'Everything else, cast in the yard',
-    blurb: 'Stepping stones, pillars & caps, copings, sills, balls, waskattie, kerbs — the full range on pallets in the yard.',
+    blurb: 'Stepping stones, pillar caps, copings, channels, window sills, gulleys, balls, waskattie, kerbs and pillars — the full range on pallets in the yard.',
     image: '/images/stepping-stones-display.jpg'
   }
 ];
@@ -479,7 +479,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenQuote }) =
                 Ready to talk about your wall?
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', lineHeight: 1.55, marginBottom: '1.75rem' }}>
-                Call the yard, WhatsApp Elza, or send us the site details and we&apos;ll come back with a quote.
+                Call the yard, WhatsApp our sales team, or send us the site details and we&apos;ll come back with a quote.
                 Small jobs and repairs welcome.
               </p>
 

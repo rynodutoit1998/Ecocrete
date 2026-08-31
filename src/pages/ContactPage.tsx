@@ -156,12 +156,6 @@ export const ContactPage: React.FC = () => {
                 }}>
                   <Mail size={16} style={{ color: '#6FA240' }} /> {COMPANY_INFO.emailPrimary}
                 </a>
-                <a href={`mailto:${COMPANY_INFO.emailSecondary}`} style={{
-                  display: 'flex', alignItems: 'center', gap: '0.45rem',
-                  textDecoration: 'none', color: '#7C7C7D', fontSize: '0.9rem'
-                }}>
-                  <Mail size={14} /> {COMPANY_INFO.emailSecondary}
-                </a>
               </div>
 
               <div style={{
@@ -328,7 +322,7 @@ export const ContactPage: React.FC = () => {
           <div style={{ maxWidth: '620px' }}>
             <h2 style={{ fontSize: '1.65rem', margin: '0 0 0.4rem', color: '#FFFFFF' }}>Would rather phone?</h2>
             <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.98rem', margin: 0, lineHeight: 1.55 }}>
-              Elza is happy to talk through options over the phone or WhatsApp.
+              Our sales team is happy to talk through options over the phone or WhatsApp.
             </p>
           </div>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>

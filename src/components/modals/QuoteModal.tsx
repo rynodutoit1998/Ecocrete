@@ -98,7 +98,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="e.g. Hendrik / Elza"
+                    placeholder="e.g. Hendrik / Maria"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -370,7 +370,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                 <span>{COMPANY_INFO.phone} ({COMPANY_INFO.contactPerson})</span>
               </a>
               <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '0.3rem' }}>
-                Email: {COMPANY_INFO.emailPrimary} | {COMPANY_INFO.emailSecondary}
+                Email: {COMPANY_INFO.emailPrimary}
               </div>
             </div>
 

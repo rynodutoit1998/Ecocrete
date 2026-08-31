@@ -196,7 +196,7 @@ export const SpecSheetModal: React.FC<SpecSheetModalProps> = ({
               Need an engineer's site assessment or bulk supply quotation?
             </div>
             <div style={{ fontWeight: 700, color: '#232623', fontSize: '0.92rem' }}>
-              Contact Elza Liebenberg: {COMPANY_INFO.phone} | {COMPANY_INFO.emailPrimary}
+              Contact Ecocrete Sales: {COMPANY_INFO.phone} | {COMPANY_INFO.emailPrimary}
             </div>
           </div>
 

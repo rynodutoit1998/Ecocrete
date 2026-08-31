@@ -117,7 +117,7 @@ export const PROJECTS_GALLERY: ProjectShowcaseItem[] = [
 export interface ProductItem {
   id: string;
   name: string;
-  category: 'walling' | 'terraforce' | 'precast';
+  category: 'walling' | 'terraforce' | 'precast' | 'landscaping';
   categoryLabel: string;
   code: string;
   image: string;
@@ -136,13 +136,12 @@ export const COMPANY_INFO = {
   tagline: "Your precast + concrete product specialist",
   subTagline: "We manufacture and install — 30 years in the industry.",
   licenseText: "Ecocrete — precast + concrete product specialist. We manufacture and install.",
-  contactPerson: "Elza Liebenberg",
-  phone: "+27 83 655 6590",
-  phoneClean: "+27836556590",
-  landline: "051 43 53 590",
+  contactPerson: "Ecocrete Sales",
+  phone: "073 966 9931",
+  phoneClean: "+27739669931",
+  landline: "051 435 3590",
   landlineClean: "+27514353590",
   emailPrimary: "sales@ecocrete.co.za",
-  emailSecondary: "elzamaritz136@gmail.com",
   location: "Bloemfontein, Free State",
   serviceFootprint: "Free State, Northern Cape, Lesotho border, and central South Africa",
   hours: {
@@ -165,7 +164,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: "walling",
     slug: "walling",
     title: "Walling",
-    tagline: "Uniquall panels and Precon Wall — smooth, louvred, sandstone or Global Plain, in different heights.",
+    tagline: "Uniquall panels and Precon Wall — Louvred, Between, Sandstone or Global Plain, in different heights.",
     category: "Walling",
     shortDesc: "Modular precast walling — Uniquall (650 & 500 slab) and Precon Wall in four finishes, available in different heights.",
     heroImage: "/images/walling-stone-face.jpg",
@@ -193,7 +192,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     ],
     specifications: [
       { label: "Systems", value: "Uniquall (650 slabs, 500 slabs) · Precon Wall" },
-      { label: "Finishes", value: "Louvred · Between · Sandstone · Global Plain · Smooth Fair-Face" },
+      { label: "Four panel types", value: "Louvred · Between · Sandstone · Global Plain" },
       { label: "Heights", value: "Multiple panel heights — walls step down sloping sites" },
       { label: "Post", value: "Reinforced H-post set in a 25 MPa concrete footing" },
       { label: "Joint", value: "Tongue-and-groove — no sightline gap" },
@@ -205,7 +204,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { id: "w-3", x: 35, y: 80, title: "Concrete footing", description: "Post foot set in a 25 MPa concrete footing." }
     ],
     faq: [
-      { q: "What finishes can I choose from?", a: "Smooth Fair-Face, Louvred, Between, Sandstone and Global Plain. You can mix finishes per elevation." },
+      { q: "What panel types can I choose from?", a: "There are four Precon panel types: Louvred, Between, Sandstone and Global Plain." },
       { q: "Do you supply the pillars and caps too?", a: "Yes — pillars (square, fluted, round 200/300) and matching caps are in the Precast range, cast in the same yard for a matched finish." }
     ]
   },
@@ -299,7 +298,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { label: "Foundation", value: "Existing footing checked; deepened or reinforced if needed" },
       { label: "Site visit", value: "Free within the Bloemfontein service area — booking on request" },
       { label: "Coverage", value: "Free State, Northern Cape, Lesotho border, central SA" },
-      { label: "Contact", value: "Elza Liebenberg — +27 83 655 6590" }
+      { label: "Contact", value: "Ecocrete Sales — 073 966 9931" }
     ],
     diagramPoints: [
       { id: "e-1", x: 35, y: 55, title: "Existing wall", description: "Kept in place — new courses stack on top." },
@@ -331,7 +330,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     benefits: [
       { title: "Repair, don't replace", desc: "We fix what's there rather than tearing the wall out.", iconName: "CheckSquare" },
       { title: "Small jobs welcome", desc: "One panel, one course, one cap — happy to come out for it.", iconName: "Users" },
-      { title: "WhatsApp a photo", desc: "Send a photo to +27 83 655 6590 for an initial idea of scope and cost.", iconName: "Phone" },
+      { title: "WhatsApp a photo", desc: "Send a photo to 073 966 9931 for an initial idea of scope and cost.", iconName: "Phone" },
       { title: "Match parts from the yard", desc: "Replacement panels, blocks and caps cast in the same yard for a matched finish.", iconName: "Award" }
     ],
     specifications: [
@@ -340,7 +339,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { label: "Post repairs", value: "Leaning / knocked post replumb or replacement" },
       { label: "Cap & coping", value: "Replacement caps, copings and window sills cast on request" },
       { label: "Site visit", value: "Bloemfontein & surrounds — WhatsApp a photo for a quick quote" },
-      { label: "Contact", value: "Elza Liebenberg — +27 83 655 6590" }
+      { label: "Contact", value: "Ecocrete Sales — 073 966 9931" }
     ],
     diagramPoints: [
       { id: "r-1", x: 40, y: 40, title: "Shifted course", description: "Re-set to original line and re-backfilled with 19mm aggregate." },
@@ -348,25 +347,25 @@ export const SERVICES_DATA: ServiceDetail[] = [
     ],
     faq: [
       { q: "Do you repair walls you didn't build?", a: "Yes. If the profile is standard we can supply matching parts; if it isn't we cast to match." },
-      { q: "How do I get a quick quote?", a: "WhatsApp a photo and the site address to +27 83 655 6590 — we'll come back to you with an idea of scope." }
+      { q: "How do I get a quick quote?", a: "WhatsApp a photo and the site address to 073 966 9931 — we'll come back to you with an idea of scope." }
     ]
   },
   {
     id: "precast",
     slug: "precast",
     title: "Precast",
-    tagline: "Stepping stones, pillar caps, copings, sills, balls, waskattie, kerbs and pillars.",
+    tagline: "Stepping stones, pillar caps, copings, channels, window sills, gulleys, balls, waskattie, kerbs and pillars.",
     category: "Precast",
     shortDesc: "The full precast range — everything the walling and Terraforce® ranges leave off, cast in the Ecocrete yard.",
     heroImage: "/images/stepping-stones-display.jpg",
-    fullDesc: `The precast range is what's on the pallets in the Ecocrete yard alongside the walling: stepping stones (Pyramid 400 / Pyramid 500 / Roman), pillar caps and pillars (square, fluted, round 200/300), copings, window sills (400×400, 450×450, 500×500, 500×800), precast balls (230 and 300), waskattie wash basins (enkel and dubbel), and kerbs.
+    fullDesc: `The precast range is what's on the pallets in the Ecocrete yard alongside the walling: stepping stones (Pyramid 400 / Pyramid 500 / Roman), pillar caps (400×400, 450×450, 500×500 and 500×800), copings, channels (half-round and paving 600/900), window sills (250 and 500), gulleys (small and big), precast balls (230 and 300), waskattie wash basins (enkel and dubbel), kerbs, and pillars (square, fluted, round 200/300).
 
     Most items are on the pallet in the yard for collection. Custom quantities and bespoke sizes are cast to order on a short lead time.`,
     applications: [
       "Garden paths, stepping stones and patio inserts",
       "Gate pillars, pillar caps and coping stones",
-      "Window sills — new build and replacement",
-      "Kerb edging and wash-down bays",
+      "Window sills — 250 and 500 formats",
+      "Channels, gulleys, kerb edging and wash-down bays",
       "Ornamental balls, planters, tables, benches & braai units"
     ],
     galleryImages: [
@@ -374,16 +373,16 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { url: "/images/pillar-caps-pyramid.jpg", caption: "Pyramid pillar caps stacked on pallet", tag: "PILLAR CAPS" },
       { url: "/images/pillar-fluted-cap.jpg", caption: "Fluted gate pillar with matching cap", tag: "PILLARS" },
       { url: "/images/balusters.jpg", caption: "Turned white balusters for a balcony run", tag: "BALUSTERS" },
-      { url: "/images/coping-stone.jpg", caption: "Coping stone — smooth top profile", tag: "COPING" },
+      { url: "/images/coping-350x1000.jpg", caption: "Coping — 350 mm wide × 1,000 mm long, raised centre profile", tag: "COPING" },
       { url: "/images/kerb-installation.jpg", caption: "Precast kerbstone laid against fresh paving", tag: "KERB" },
-      { url: "/images/precast-braai.jpg", caption: "Stone-face precast braai (BBQ) unit", tag: "BRAAI" },
+      { url: "/images/landscaping-concrete-braai.jpg", caption: "Stone-face precast concrete braai", tag: "BRAAI" },
       { url: "/images/precast-table-bench.jpg", caption: "Precast garden table with matching benches", tag: "TABLE & BENCH" },
       { url: "/images/screen-blocks.jpg", caption: "Decorative screen blocks on pallet", tag: "SCREEN BLOCK" },
       { url: "/images/concrete-planter.jpg", caption: "Precast concrete planter", tag: "PLANTER" },
       { url: "/images/showroom-display.jpg", caption: "Yard display: balls, benches & pillar caps", tag: "YARD" }
     ],
     benefits: [
-      { title: "The full range in one yard", desc: "Stepping stones, caps, copings, sills, balls, waskattie, kerbs, pillars — no running around.", iconName: "Layers" },
+      { title: "The full range in one yard", desc: "Stepping stones, caps, copings, channels, sills, gulleys, balls, waskattie, kerbs and pillars — no running around.", iconName: "Layers" },
       { title: "Matched pillar to cap", desc: "Square, fluted and round pillars with caps sized to match — same yard, same finish.", iconName: "Ruler" },
       { title: "Small quantities off the pallet", desc: "Grab a few window sills or a couple of caps without a minimum order.", iconName: "Award" },
       { title: "Custom sizes cast to order", desc: "Non-standard sizes cast on a short lead time — bring the dimension.", iconName: "Sun" }
@@ -391,8 +390,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     specifications: [
       { label: "Stepping stones", value: "Pyramid 400 · Pyramid 500 · Roman" },
       { label: "Pillars", value: "Square · Fluted · Round 200 · Round 300" },
-      { label: "Pillar caps", value: "To match all pillar profiles" },
-      { label: "Window sills", value: "400×400 · 450×450 · 500×500 · 500×800" },
+      { label: "Pillar caps", value: "400×400 · 450×450 · 500×500 · 500×800" },
+      { label: "Coping", value: "1,000 mm long × 350 mm wide · 70 mm centre · 50 mm edges" },
+      { label: "Channels", value: "Half Round · Paving 600 · Paving 900" },
+      { label: "Window sills", value: "250 · 500" },
+      { label: "Gulleys", value: "Small · Big" },
       { label: "Waskattie basins", value: "Enkel · Dubbel" },
       { label: "Balls", value: "230 · 300" },
       { label: "Also cast", value: "Copings, kerbs, balusters, screen blocks, planters, tables, benches, braai units" }
@@ -472,17 +474,17 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
   },
   {
     id: "prod-precon-sandstone",
-    name: "Precon Wall — Sandstone",
+    name: "Precon Wall — Sandstone Panel",
     category: "walling",
     categoryLabel: "Walling",
     code: "PRECON-SANDSTONE",
     image: "/images/walling-stone-face.jpg",
-    shortDesc: "Sandstone / ashlar-style relief Precon Wall panel.",
+    shortDesc: "Sandstone / ashlar-style relief panel — one of the four Precon Wall panel types.",
     dimensions: "Standard panel sizes",
     weight: "Per finish",
     strengthMPa: "≈ 25 – 30 MPa",
     application: "Feature elevations, decorative boundary walls, stone-look façades",
-    features: ["Ashlar-style stone relief", "Cast from steel mould for consistent face", "Pairs with matching pillars", "Available in different heights"],
+    features: ["One of four Precon panel types", "Ashlar-style stone relief", "Cast from steel mould for a consistent face", "Available in different heights"],
     inStock: true
   },
   {
@@ -647,17 +649,17 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
   },
   {
     id: "prod-pillar-cap",
-    name: "Pillar Cap — Square / Fluted / Round",
+    name: "Pillar Cap — 400 / 450 / 500 / 500×800",
     category: "precast",
     categoryLabel: "Precast",
     code: "PC-CAP",
     image: "/images/pillar-caps-pyramid.jpg",
-    shortDesc: "Pillar caps sized to match our square, fluted and round pillar range.",
-    dimensions: "Square · Fluted · Round 200 · Round 300",
+    shortDesc: "Precast pillar caps in the four sizes listed in the Ecocrete product range.",
+    dimensions: "400×400 · 450×450 · 500×500 · 500×800",
     weight: "Per size",
     strengthMPa: "≈ 25 – 30 MPa",
     application: "Gate-pillar terminations, boundary-wall pillar caps, garden feature pillars",
-    features: ["Matches Ecocrete pillars", "Four profile options", "Cast from the same yard — matched finish", "Yard stock"],
+    features: ["Four standard sizes", "Weather-shedding profile", "Cast in the Ecocrete yard", "Yard stock"],
     inStock: true
   },
   {
@@ -677,32 +679,62 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
   },
   {
     id: "prod-coping",
-    name: "Coping",
+    name: "Coping — 350 × 1,000 mm",
     category: "precast",
     categoryLabel: "Precast",
     code: "PC-COPE",
-    image: "/images/coping-stone.jpg",
-    shortDesc: "Precast coping stones — smooth top profile for wall tops and step nosings.",
-    dimensions: "Standard coping section",
+    image: "/images/coping-350x1000.jpg",
+    shortDesc: "Precast coping with a raised centre and sloped edges for effective water run-off.",
+    dimensions: "1,000 mm long × 350 mm wide · 70 mm high at centre · 50 mm high at edges",
     weight: "Per unit",
     strengthMPa: "≈ 25 MPa",
     application: "Boundary-wall tops, garden-wall tops, step nosings, coping details",
-    features: ["Smooth top profile", "Weather-shed drip", "Cast in the Ecocrete yard", "Yard pallet stock"],
+    features: ["350 mm wide", "1,000 mm long", "70 mm centre height", "50 mm edge height"],
     inStock: true
   },
   {
     id: "prod-window-sill",
-    name: "Window Sill — 400 / 450 / 500 / 500×800",
+    name: "Window Sill — 250 / 500",
     category: "precast",
     categoryLabel: "Precast",
     code: "PC-SILL",
     image: "/images/coping-stone.jpg",
-    shortDesc: "Window sills in 400×400, 450×450, 500×500 and 500×800 formats.",
-    dimensions: "400×400 · 450×450 · 500×500 · 500×800",
+    shortDesc: "Precast window sills in the 250 and 500 formats listed in the Ecocrete range.",
+    dimensions: "250 · 500",
     weight: "Per size",
     strengthMPa: "≈ 25 MPa",
     application: "Face-brick window sills, sill replacements, building specialists",
-    features: ["Four standard sizes", "Weather-shed drip detail", "Consistent cast dimensions", "Yard stock"],
+    features: ["Two standard formats", "Weather-shed drip detail", "Consistent cast dimensions", "Yard stock"],
+    inStock: true
+  },
+  {
+    id: "prod-channel",
+    name: "Paving Channel — 600 mm",
+    category: "precast",
+    categoryLabel: "Precast",
+    code: "PC-CHANNEL",
+    image: "/images/paving-channel-600.jpg",
+    shortDesc: "Shallow precast paving channel for controlled surface-water flow through paved areas.",
+    dimensions: "600 mm long · 150 mm high at outside edges · 70 mm high at centre",
+    weight: "Per profile",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Paved yards, driveways, walkways and surface-water management",
+    features: ["600 mm length", "150 mm outside height", "70 mm centre height", "Shaped fall directs surface water"],
+    inStock: true
+  },
+  {
+    id: "prod-gulley",
+    name: "Gulley — Small / Big",
+    category: "precast",
+    categoryLabel: "Precast",
+    code: "PC-GULLEY",
+    image: "/images/concrete-gully.jpg",
+    shortDesc: "Precast concrete gulleys in small and big formats.",
+    dimensions: "Small · Big",
+    weight: "Per size",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Yard drainage, wash-down areas and surface-water collection points",
+    features: ["Small and big formats", "Solid precast construction", "Suitable for external drainage", "Yard stock"],
     inStock: true
   },
   {
@@ -718,6 +750,51 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     strengthMPa: "≈ 25 MPa",
     application: "Pillar tops, driveway markers, garden accents, feature verges",
     features: ["Two diameters — 230 & 300", "Cast solid", "Weather-durable", "Yard pallet stock"],
+    inStock: true
+  },
+  {
+    id: "prod-landscaping-table-bench",
+    name: "Concrete Patio Table & Benches",
+    category: "landscaping",
+    categoryLabel: "Landscaping",
+    code: "LAND-TABLE-BENCH",
+    image: "/images/landscaping-table-bench.jpg",
+    shortDesc: "Heavy-duty precast concrete patio table with matching freestanding benches.",
+    dimensions: "Table and matching bench set",
+    weight: "Heavy precast set",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Gardens, patios, braai areas, parks, schools and outdoor entertainment spaces",
+    features: ["Weather-resistant concrete", "Matching table and benches", "Low-maintenance outdoor furniture", "Suitable for permanent outdoor use"],
+    inStock: true
+  },
+  {
+    id: "prod-landscaping-screen-block",
+    name: "Decorative Screen Block",
+    category: "landscaping",
+    categoryLabel: "Landscaping",
+    code: "LAND-SCREEN-BLOCK",
+    image: "/images/screen-blocks.jpg",
+    shortDesc: "Geometric open-pattern concrete screen block for decorative garden and patio walls.",
+    dimensions: "Standard decorative block format",
+    weight: "Per block",
+    strengthMPa: "≈ 20 – 25 MPa",
+    application: "Garden screens, patio dividers, courtyard walls, ventilation panels and decorative boundary features",
+    features: ["Open geometric pattern", "Allows light and airflow", "Suitable for decorative wall panels", "Cast in the Ecocrete yard"],
+    inStock: true
+  },
+  {
+    id: "prod-landscaping-concrete-braai",
+    name: "Precast Concrete Braai",
+    category: "landscaping",
+    categoryLabel: "Landscaping",
+    code: "LAND-BRAAI",
+    image: "/images/landscaping-concrete-braai.jpg",
+    shortDesc: "Stone-face precast concrete braai for permanent outdoor entertainment areas.",
+    dimensions: "900 mm long × 800 mm high · 60 mm wall thickness",
+    weight: "Heavy precast unit",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Patios, gardens, braai areas, lapas and outdoor entertainment spaces",
+    features: ["900 mm length", "800 mm height", "60 mm wall thickness", "Integrated fire and grill area"],
     inStock: true
   },
   {
@@ -775,7 +852,7 @@ export const TESTIMONIALS = [
     rating: 5
   },
   {
-    quote: "Elza matched the profile of our old wall exactly when we extended it higher. You can't see the join from the street.",
+    quote: "The Ecocrete team matched the profile of our old wall exactly when we extended it higher. You can't see the join from the street.",
     author: "Estate Manager",
     location: "Bloemfontein",
     project: "Extending existing walling",
@@ -802,14 +879,14 @@ export const FAQ_GENERAL = [
   },
   {
     question: "Do you handle small repair jobs?",
-    answer: "Yes. Shifted Terraforce® courses, cracked panels, leaning posts, replacement caps — small repair jobs are welcome, not just full installs. WhatsApp a photo to +27 83 655 6590 for a quick quote."
+    answer: "Yes. Shifted Terraforce® courses, cracked panels, leaning posts, replacement caps — small repair jobs are welcome, not just full installs. WhatsApp a photo to 073 966 9931 for a quick quote."
   },
   {
     question: "What's in the Precast range?",
-    answer: "Stepping stones (Pyramid 400/500, Roman), pillar caps, pillars (square, fluted, round 200/300), copings, window sills (400/450/500/500×800), balls (230/300), waskattie (enkel/dubbel) and kerbs."
+    answer: "Stepping stones (Pyramid 400/500, Roman), pillar caps (400×400/450×450/500×500/500×800), copings, channels (half-round and paving 600/900), window sills (250/500), gulleys (small/big), balls (230/300), waskattie (enkel/dubbel), kerbs and pillars (square, fluted, round 200/300)."
   },
   {
     question: "How do I request a quote?",
-    answer: "Use the Quote form on this site, email sales@ecocrete.co.za, or phone the yard on 051 43 53 590 / Elza on +27 83 655 6590."
+    answer: "Use the Quote form on this site, email sales@ecocrete.co.za, phone the yard on 051 435 3590, or call / WhatsApp sales on 073 966 9931."
   }
 ];

@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteModal }) 
               Ready to talk about your wall?
             </h3>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', lineHeight: 1.55, margin: 0 }}>
-              Call the yard, WhatsApp Elza, or send us the site details and we&apos;ll come back with a quote.
+              Call the yard, WhatsApp our sales team, or send us the site details and we&apos;ll come back with a quote.
               Small jobs and repairs welcome.
             </p>
           </div>

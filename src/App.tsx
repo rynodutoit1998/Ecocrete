@@ -103,7 +103,7 @@ export function App() {
         )}
       </main>
 
-      {/* Persistent Footer with embedded Elza Liebenberg contact info & licensing */}
+      {/* Persistent Footer with Ecocrete sales contact info & licensing */}
       <Footer
         onNavigate={handleNavigate}
         onOpenQuoteModal={() => handleOpenQuoteModal()}
