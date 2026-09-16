@@ -357,7 +357,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Stepping stones, pillar caps, copings, channels, window sills, gulleys, balls, waskattie, kerbs and pillars.",
     category: "Precast",
     shortDesc: "The full precast range — everything the walling and Terraforce® ranges leave off, cast in the Ecocrete yard.",
-    heroImage: "/images/stepping-stones-display.jpg",
+    heroImage: "/images/stepping-stones-pyramid.jpg",
     fullDesc: `The precast range is what's on the pallets in the Ecocrete yard alongside the walling: stepping stones (Pyramid 400 / Pyramid 500 / Roman), pillar caps (400×400, 450×450, 500×500 and 500×800), copings, channels (half-round and paving 600/900), window sills (250 and 500), gulleys (small and big), precast balls (230 and 300), waskattie wash basins (enkel and dubbel), kerbs, and pillars (square, fluted, round 200/300).
 
     Most items are on the pallet in the yard for collection. Custom quantities and bespoke sizes are cast to order on a short lead time.`,
@@ -369,7 +369,8 @@ export const SERVICES_DATA: ServiceDetail[] = [
       "Ornamental balls, planters, tables, benches & braai units"
     ],
     galleryImages: [
-      { url: "/images/stepping-stones-display.jpg", caption: "Stepping-stone range on display in the yard", tag: "STEPPING STONES" },
+      { url: "/images/stepping-stones-pyramid.jpg", caption: "Pyramid-pattern stepping stones on pallet", tag: "STEPPING STONES" },
+      { url: "/images/concrete-gully.jpg", caption: "Precast concrete drainage gulleys on pallet", tag: "GULLEYS" },
       { url: "/images/pillar-caps-pyramid.jpg", caption: "Pyramid pillar caps stacked on pallet", tag: "PILLAR CAPS" },
       { url: "/images/pillar-fluted-cap.jpg", caption: "Fluted gate pillar with matching cap", tag: "PILLARS" },
       { url: "/images/balusters.jpg", caption: "Turned white balusters for a balcony run", tag: "BALUSTERS" },

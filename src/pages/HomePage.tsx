@@ -39,7 +39,7 @@ const PRODUCT_FAMILIES = [
     title: 'Precast',
     tagline: 'Everything else, cast in the yard',
     blurb: 'Stepping stones, pillar caps, copings, channels, window sills, gulleys, balls, waskattie, kerbs and pillars — the full range on pallets in the yard.',
-    image: '/images/stepping-stones-display.jpg'
+    image: '/images/stepping-stones-pyramid.jpg'
   }
 ];
 
@@ -66,7 +66,7 @@ const YARD_STRIP = [
   { src: '/images/pillar-fluted-cap.jpg', label: 'Fluted pillar & cap' },
   { src: '/images/kerb-installation.jpg', label: 'Kerb laid to line' },
   { src: '/images/precast-braai.jpg', label: 'Stone-face braai unit' },
-  { src: '/images/stepping-stones-display.jpg', label: 'Stepping stones on pallet' }
+  { src: '/images/concrete-gully.jpg', label: 'Precast drainage gulleys' }
 ];
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenQuote }) => {

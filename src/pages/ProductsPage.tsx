@@ -56,7 +56,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onOpenSpecSheet, onO
         style={{
           position: 'relative',
           padding: '4.5rem 0 4rem',
-          backgroundImage: `linear-gradient(rgba(20, 24, 22, 0.78), rgba(20, 24, 22, 0.72)), url('/images/stepping-stones-display.jpg')`,
+          backgroundImage: `linear-gradient(rgba(20, 24, 22, 0.78), rgba(20, 24, 22, 0.72)), url('/images/stepping-stones-pyramid.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           color: '#FFFFFF'
