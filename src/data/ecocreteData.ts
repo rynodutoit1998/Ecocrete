@@ -381,8 +381,8 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { url: "/images/landscaping-concrete-braai.jpg", caption: "Stone-face precast concrete braai", tag: "BRAAI" },
       { url: "/images/precast-table-bench.jpg", caption: "Precast garden table with matching benches", tag: "TABLE & BENCH" },
       { url: "/images/screen-blocks.jpg", caption: "Decorative screen blocks on pallet", tag: "SCREEN BLOCK" },
-      { url: "/images/concrete-planter.jpg", caption: "Precast concrete planter", tag: "PLANTER" },
-      { url: "/images/showroom-display.jpg", caption: "Yard display: balls, benches & pillar caps", tag: "YARD" }
+      { url: "/images/precast-table-bench-stool.jpg", caption: "Precast bench, table and geometric stool patio set", tag: "FURNITURE" },
+      { url: "/images/precast-concrete-balls.jpg", caption: "Ornamental precast concrete balls on pallet", tag: "BALLS" }
     ],
     benefits: [
       { title: "The full range in one yard", desc: "Stepping stones, caps, copings, channels, sills, gulleys, balls, waskattie, kerbs and pillars — no running around.", iconName: "Layers" },
@@ -771,18 +771,33 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     inStock: true
   },
   {
+    id: "prod-precast-table-bench-stool",
+    name: "Precast Bench, Table and Stool",
+    category: "precast",
+    categoryLabel: "Precast",
+    code: "PC-TABLE-BENCH-STOOL",
+    image: "/images/precast-table-bench-stool.jpg",
+    shortDesc: "Precast concrete outdoor patio set featuring dining table, bench and faceted geometric stool.",
+    dimensions: "Table, bench and stool set",
+    weight: "Heavy precast set",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Gardens, patios, braai areas, outdoor entertainment spaces, parks and schools",
+    features: ["Full concrete table, bench and stool set", "Weatherproof & durable for permanent outdoor use", "Modern geometric faceted stool", "Cast in the Ecocrete yard"],
+    inStock: true
+  },
+  {
     id: "prod-ball",
     name: "Ball — 230 / 300",
     category: "precast",
     categoryLabel: "Precast",
     code: "PC-BALL",
-    image: "/images/showroom-display.jpg",
-    shortDesc: "Ornamental precast concrete balls — 230 mm and 300 mm.",
+    image: "/images/precast-concrete-balls.jpg",
+    shortDesc: "Ornamental precast concrete balls — 230 mm and 300 mm diameters for pillar caps and garden accents.",
     dimensions: "230 mm · 300 mm",
     weight: "Per size",
     strengthMPa: "≈ 25 MPa",
     application: "Pillar tops, driveway markers, garden accents, feature verges",
-    features: ["Two diameters — 230 & 300", "Cast solid", "Weather-durable", "Yard pallet stock"],
+    features: ["Two diameters — 230 & 300 mm", "Cast solid high-strength concrete", "Weather-durable", "Yard pallet stock"],
     inStock: true
   },
   {
