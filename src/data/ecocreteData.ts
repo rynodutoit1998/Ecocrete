@@ -742,17 +742,17 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
   },
   {
     id: "prod-channel",
-    name: "Paving Channel — 600 mm",
+    name: "Water Channel — 600 mm",
     category: "precast",
     categoryLabel: "Precast",
     code: "PC-CHANNEL",
     image: "/images/paving-channel-600.jpg",
-    shortDesc: "Shallow precast paving channel for controlled surface-water flow through paved areas.",
+    shortDesc: "Precast concrete water channel for controlled surface-water flow, driveway run-off and drainage.",
     dimensions: "600 mm long · 150 mm high at outside edges · 70 mm high at centre",
     weight: "Per profile",
     strengthMPa: "≈ 25 – 30 MPa",
-    application: "Paved yards, driveways, walkways and surface-water management",
-    features: ["600 mm length", "150 mm outside height", "70 mm centre height", "Shaped fall directs surface water"],
+    application: "Paved yards, driveways, walkways and surface-water drainage management",
+    features: ["600 mm length", "150 mm outside height", "70 mm centre height", "Shaped dish fall directs water flow"],
     inStock: true
   },
   {
