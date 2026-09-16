@@ -182,7 +182,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { url: "/images/precast-boundary-h-post.jpg", caption: "H-post and horizontal slab system, standard height", tag: "UNIQUALL" },
       { url: "/images/walling-stone-face.jpg", caption: "Precon Wall — sandstone / ashlar-style relief panel", tag: "PRECON WALL" },
       { url: "/images/precast-boundary-smooth.jpg", caption: "Smooth fair-face precast boundary wall", tag: "SMOOTH" },
-      { url: "/images/precast-boundary-decorative.jpg", caption: "Fair-face wall with matching pillar caps", tag: "PILLARED" }
+      { url: "/images/precast-boundary-decorative.jpg", caption: "Uniq Wall with integrated pillars and decorative caps", tag: "UNIQ WALL" }
     ],
     benefits: [
       { title: "Two systems", desc: "Uniquall in 650 & 500 slab formats, plus Precon Wall in four finishes.", iconName: "Layers" },
@@ -458,18 +458,33 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     inStock: true
   },
   {
+    id: "prod-uniqwall-pillars",
+    name: "Uniq Wall with Pillars",
+    category: "walling",
+    categoryLabel: "Walling",
+    code: "UNIQ-PILLARS",
+    image: "/images/precast-boundary-decorative.jpg",
+    shortDesc: "Uniq Wall precast perimeter walling integrated with architectural pillars and decorative caps.",
+    dimensions: "Available in different heights",
+    weight: "Per installation",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Front perimeters, residential estate boundary walls, architectural entrance elevations",
+    features: ["Integrated precast architectural pillars", "Matching decorative pillar caps", "Uniquall interlocking slab system", "Available in different heights"],
+    inStock: true
+  },
+  {
     id: "prod-precon-between",
     name: "Precon Wall — Between",
     category: "walling",
     categoryLabel: "Walling",
     code: "PRECON-BETWEEN",
-    image: "/images/precast-boundary-decorative.jpg",
-    shortDesc: "'Between' finish Precon Wall — clean recessed joint detail.",
+    image: "/images/walling-between.jpg",
+    shortDesc: "'Between' finish Precon Wall — clean recessed shadow-line groove down each panel.",
     dimensions: "Standard panel sizes",
     weight: "Per finish",
     strengthMPa: "≈ 25 – 30 MPa",
-    application: "Modern boundary walls with a defined shadow line",
-    features: ["Recessed joint detail", "Clean modern face", "Cast in the Ecocrete yard", "Available in different heights"],
+    application: "Modern boundary walls with a defined architectural shadow line",
+    features: ["Recessed shadow-line groove", "Clean modern face", "Cast in the Ecocrete yard", "Available in different heights"],
     inStock: true
   },
   {
