@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteModal }) 
               {[
                 { id: 'home' as const, label: 'Home' },
                 { id: 'services' as const, label: 'Services' },
-                { id: 'products' as const, label: 'Products' },
+                { id: 'products' as const, label: 'Gallery' },
                 { id: 'about' as const, label: 'About' },
                 { id: 'contact' as const, label: 'Contact' }
               ].map((l) => (

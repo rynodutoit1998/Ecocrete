@@ -22,7 +22,7 @@ type NavId = 'home' | 'services' | 'products' | 'about' | 'contact';
 const NAV_ITEMS: { id: NavId; label: string; matches?: string[] }[] = [
   { id: 'home', label: 'Home' },
   { id: 'services', label: 'Services', matches: ['services', 'service-detail'] },
-  { id: 'products', label: 'Products' },
+  { id: 'products', label: 'Gallery' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' }
 ];

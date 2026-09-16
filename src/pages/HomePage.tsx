@@ -155,7 +155,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenQuote }) =
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7ABC3A'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#92D04F'}
             >
-              Explore Our Products
+              Explore Our Gallery
               <ArrowRight size={16} />
             </button>
 
@@ -406,7 +406,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenQuote }) =
                 display: 'inline-flex', alignItems: 'center', gap: '0.4rem'
               }}
             >
-              View all products <ArrowRight size={15} />
+              View full gallery <ArrowRight size={15} />
             </button>
           </div>
 

@@ -8,7 +8,7 @@ interface ProductsPageProps {
 }
 
 const CATEGORIES: { id: 'all' | 'walling' | 'terraforce' | 'precast' | 'landscaping'; label: string; sub?: string }[] = [
-  { id: 'all', label: 'All Products' },
+  { id: 'all', label: 'All / Gallery' },
   { id: 'walling', label: 'Walling', sub: 'Uniquall · Precon: Louvred · Between · Sandstone · Global Plain' },
   { id: 'terraforce', label: 'Terraforce®', sub: 'L15 · 4x4 · Step · Bat · Terrafix · Terrapac' },
   { id: 'precast', label: 'Precast', sub: 'Stepping stones · Pillar caps · Copings · Channels · Window sills · Gulleys · Balls · Waskattie · Kerbs · Pillars' },
@@ -72,13 +72,13 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onOpenSpecSheet, onO
             fontSize: '0.75rem', fontWeight: 700, color: '#C8E9A3',
             marginBottom: '1.25rem', letterSpacing: '0.08em', textTransform: 'uppercase'
           }}>
-            Our full range
+            Product & Project Gallery
           </div>
           <h1 style={{
             fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', lineHeight: 1.1, fontWeight: 700,
             margin: '0 auto 1rem', maxWidth: '860px', letterSpacing: '-0.015em', color: '#FFFFFF'
           }}>
-            Everything we cast, on one page.
+            Everything we cast, in our gallery.
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', maxWidth: '640px', margin: '0 auto', lineHeight: 1.55 }}>
             Walling, Terraforce® and the full Precast range — filter by family and search by name or code.
@@ -128,7 +128,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onOpenSpecSheet, onO
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products..."
+                placeholder="Search gallery..."
                 style={{
                   border: 'none', outline: 'none', flex: 1,
                   fontSize: '0.9rem', color: '#232623', backgroundColor: 'transparent',
