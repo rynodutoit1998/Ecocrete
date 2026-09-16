@@ -63,7 +63,7 @@ const ON_SITE_SERVICES = [
 const YARD_STRIP = [
   { src: '/images/terraforce-poolside.jpg', label: 'Terraforce® poolside wall' },
   { src: '/images/precast-boundary-decorative.jpg', label: 'Precon walling + caps' },
-  { src: '/images/pillar-fluted-cap.jpg', label: 'Fluted pillar & cap' },
+  { src: '/images/devilsfork-pillar.jpg', label: 'Devilsfork pillar' },
   { src: '/images/kerb-installation.jpg', label: 'Kerb laid to line' },
   { src: '/images/precast-braai.jpg', label: 'Stone-face braai unit' },
   { src: '/images/concrete-gully.jpg', label: 'Precast drainage gulleys' }
