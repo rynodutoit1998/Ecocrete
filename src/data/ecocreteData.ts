@@ -492,17 +492,17 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
   },
   {
     id: "prod-precon-louvred",
-    name: "Precon Wall — Louvred",
+    name: "Precon Wall — Louvre",
     category: "walling",
     categoryLabel: "Walling",
-    code: "PRECON-LOUVRED",
+    code: "PRECON-LOUVRE",
     image: "/images/walling-louvred.jpg",
-    shortDesc: "Louvred-finish Precon Wall panel with horizontal relief slats.",
-    dimensions: "Standard panel sizes",
+    shortDesc: "Horizontal louvre precast boundary wall panel with reinforced H-posts and matching pyramid caps.",
+    dimensions: "Standard panel sizes · Various heights",
     weight: "Per finish",
     strengthMPa: "≈ 25 – 30 MPa",
-    application: "Boundary walls with horizontal louvred grain",
-    features: ["Louvred face relief", "Consistent cast dimension", "Pairs with Uniquall post system", "Available in different heights"],
+    application: "Boundary and privacy walls with clean horizontal louvred slats",
+    features: ["Authentic horizontal louvre profile", "Heavy-duty reinforced H-posts", "Matching pyramid post caps", "Available in multiple wall heights", "Manufactured in yard & installed on site"],
     inStock: true
   },
   {
