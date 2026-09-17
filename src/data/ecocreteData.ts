@@ -504,12 +504,18 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     categoryLabel: "Walling",
     code: "PRECON-SMOOTH",
     image: "/images/walling-plain-stack.jpg",
-    shortDesc: "Clean smooth fair-face Precon Wall panel — sleek minimalist concrete finish.",
-    dimensions: "Standard panel sizes · Various heights",
-    weight: "Per finish",
+    shortDesc: "Skoon gladde (Glad / Smooth) fair-face Precon Wall paneel — minimalistiese moderne betonafwerking sonder verfvereiste.",
+    dimensions: "1,450 mm lank × 300 mm hoog × 35 mm dik",
+    weight: "≈ 36 kg per panel",
     strengthMPa: "≈ 25 – 30 MPa",
-    application: "Modern boundary walls, industrial estate perimeters",
-    features: ["Smooth fair-face finish", "No paint required", "Cast in the Ecocrete yard", "Available in different heights"],
+    application: "Moderne grensmure, industriële persele, sekuriteitsheinings met skoon minimalistiese betonpanele",
+    features: [
+      "1,450 mm lengte × 300 mm hoogte × 35 mm dikte",
+      "Skoon gladde (Glad / Smooth) fair-face afwerking",
+      "Geen verfwerk benodig nie — duursame natuurlike beton",
+      "Insteek-en-groef stelsel vir stewige interlocking met H-pale",
+      "Vervaardig in Ecocrete werf en op perseel geïnstalleer"
+    ],
     inStock: true
   },
 
