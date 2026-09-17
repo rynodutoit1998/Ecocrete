@@ -12,8 +12,8 @@ const CATEGORIES: { id: 'all' | 'walling' | 'storage-units' | 'terraforce' | 'pr
   { id: 'walling', label: 'Walling', sub: 'Uniquall · Uniq Wall with Steel & Pillars · Precon: Louvre · Between · Sandstone · Global Plain' },
   { id: 'storage-units', label: 'Storage & Modular Units', sub: 'Precast rooms · Living units / buitekamers · Storage units / stoorkamers · Guard huts' },
   { id: 'terraforce', label: 'Terraforce®', sub: 'L15 · 4x4 · Step · Bat · Terrafix · Terrapac' },
-  { id: 'precast', label: 'Precast', sub: 'Stepping stones · Pillar caps · Copings · Channels · Window sills · Gulleys · Balls · Waskattie · Kerbs · Pillars' },
-  { id: 'landscaping', label: 'Landscaping', sub: 'Outdoor furniture · Braais · Screen blocks · Stepping stones · Pillars · Caps · Copings · Balls · Kerbs' }
+  { id: 'precast', label: 'Precast', sub: 'Stepping stones · Pillar caps · Copings · Channels & covers · Balustrades · Window sills · Gulleys · Balls · Waskattie · Kerbs · Pillars' },
+  { id: 'landscaping', label: 'Landscaping', sub: 'Outdoor furniture · Braais · Balustrades · Screen blocks · Stepping stones · Pillars · Caps · Copings · Balls · Kerbs' }
 ];
 
 const LANDSCAPING_PRODUCT_IDS = new Set([
@@ -24,7 +24,8 @@ const LANDSCAPING_PRODUCT_IDS = new Set([
   'prod-pillar',
   'prod-coping',
   'prod-ball',
-  'prod-kerb'
+  'prod-kerb',
+  'prod-balusters'
 ]);
 
 export const ProductsPage: React.FC<ProductsPageProps> = ({ onOpenSpecSheet, onOpenQuote }) => {

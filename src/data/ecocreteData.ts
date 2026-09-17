@@ -903,6 +903,27 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     inStock: true
   },
   {
+    id: "prod-balusters",
+    name: "Precast Ballustrades",
+    category: "precast",
+    categoryLabel: "Precast",
+    code: "PC-BALUSTER",
+    image: "/images/balusters.jpg",
+    shortDesc: "Classic turned precast concrete balustrades with top rail and base for balconies, verandas, stairs and terrace boundaries.",
+    dimensions: "Standard turned baluster heights · Matching top & bottom rails",
+    weight: "≈ 18 – 22 kg per baluster",
+    strengthMPa: "≈ 30 MPa reinforced precast concrete",
+    application: "Balconies, verandas, outdoor patios, raised terraces, staircase railings and ornamental perimeter borders",
+    features: [
+      "Classic turned architectural profile",
+      "Reinforced internal steel rod for structural strength",
+      "Smooth fair-face cast finish suitable for painting or raw concrete",
+      "Pairs with matching precast coping rails and base blocks",
+      "Manufactured in the Ecocrete yard"
+    ],
+    inStock: true
+  },
+  {
     id: "prod-landscaping-table-bench",
     name: "Concrete Patio Table & Benches",
     category: "landscaping",
