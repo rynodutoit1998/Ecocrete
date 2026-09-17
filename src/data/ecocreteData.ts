@@ -359,13 +359,13 @@ export const SERVICES_DATA: ServiceDetail[] = [
     category: "Precast",
     shortDesc: "The full precast range — everything the walling and Terraforce® ranges leave off, cast in the Ecocrete yard.",
     heroImage: "/images/stepping-stones-pyramid.jpg",
-    fullDesc: `The precast range is what's on the pallets in the Ecocrete yard alongside the walling: stepping stones (Pyramid 400 / Pyramid 500 / Roman), pillar caps (400×400, 450×450, 500×500 and 500×800), copings, channels (half-round and paving 600/900), window sills (250 and 500), gulleys (small and big), precast balls (230 and 300), waskattie wash basins (enkel and dubbel), kerbs, and pillars (square, fluted, round 200/300).
+    fullDesc: `The precast range is what's on the pallets in the Ecocrete yard alongside the walling: stepping stones (Pyramid 400 / Pyramid 500 / Roman), pillar caps (400×400, 450×450, 500×500 and 500×800), copings, channels (half-round and paving 600/900), window sills (170 mm wyd × 80/60 mm hoog × 1 m lank), gulleys (small and big), precast balls (230 and 300), waskattie wash basins (enkel and dubbel), kerbs, and pillars (square, fluted, round 200/300).
 
     Most items are on the pallet in the yard for collection. Custom quantities and bespoke sizes are cast to order on a short lead time.`,
     applications: [
       "Garden paths, stepping stones and patio inserts",
       "Gate pillars, pillar caps and coping stones",
-      "Window sills — 250 and 500 formats",
+      "Window sills — 170 mm format (1 m lank)",
       "Channels, gulleys, kerb edging and wash-down bays",
       "Ornamental balls, planters, tables, benches & braai units"
     ],
@@ -397,7 +397,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { label: "Pillar caps", value: "400×400 · 450×450 · 500×500 · 500×800" },
       { label: "Coping", value: "1,000 mm long × 350 mm wide · 70 mm centre · 50 mm edges" },
       { label: "Channels", value: "Half Round · Paving 600 · Paving 900 · Channel Covers" },
-      { label: "Window sills", value: "250 · 500" },
+      { label: "Window sills", value: "170 mm wyd × 80 mm agter / 60 mm voor × 1 m lank" },
       { label: "Gulleys", value: "Small · Big" },
       { label: "Waskattie basins", value: "Enkel · Dubbel" },
       { label: "Balls", value: "230 · 300" },
@@ -808,17 +808,24 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
   },
   {
     id: "prod-window-sill",
-    name: "Window Sill — 250 / 500",
+    name: "Window Sill — 170 mm (1 m)",
     category: "precast",
     categoryLabel: "Precast",
-    code: "PC-SILL",
+    code: "PC-SILL-170",
     image: "/images/precast-window-sills.jpg",
-    shortDesc: "Precast window sills in 250mm and 500mm formats with weather-shed drip edge.",
-    dimensions: "250 · 500",
-    weight: "Per size",
-    strengthMPa: "≈ 25 MPa",
-    application: "Face-brick window sills, sill replacements, building specialists",
-    features: ["Two standard formats", "Weather-shed drip detail", "Consistent cast dimensions", "Yard stock"],
+    shortDesc: "Precast concrete window sill with built-in water runoff slope (80 mm back to 60 mm front) and underside drip groove.",
+    dimensions: "1,000 mm (1 m) lank × 170 mm wyd · 80 mm hoog agter · 60 mm hoog voor",
+    weight: "≈ 22 kg per unit",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Window sills for face-brick, plastered brickwork, residential homes, commercial buildings and sill replacements",
+    features: [
+      "1,000 mm (1 m) length",
+      "170 mm width",
+      "80 mm back height tapering to 60 mm front height",
+      "Built-in weather-shed slope & underside drip rebate",
+      "Smooth fair-face cast finish",
+      "Yard pallet stock ready for collection or delivery"
+    ],
     inStock: true
   },
   {
@@ -1054,7 +1061,7 @@ export const FAQ_GENERAL = [
   },
   {
     question: "What's in the Precast range?",
-    answer: "Stepping stones (Pyramid 400/500, Roman), pillar caps (400×400/450×450/500×500/500×800), copings, channels (half-round and paving 600/900), window sills (250/500), gulleys (small/big), balls (230/300), waskattie (enkel/dubbel), kerbs and pillars (square, fluted, round 200/300)."
+    answer: "Stepping stones (Pyramid 400/500, Roman), pillar caps (400×400/450×450/500×500/500×800), copings, channels (half-round and paving 600/900) & channel covers, window sills (170 mm × 1 m), gulleys (small/big), balls (230/300), balustrades, waskattie (enkel/dubbel), kerbs and pillars (square, fluted, round 200/300)."
   },
   {
     question: "How do I request a quote?",
