@@ -133,9 +133,9 @@ export interface ProductItem {
 
 export const COMPANY_INFO = {
   name: "Ecocrete",
-  tagline: "Your precast + concrete product specialist",
-  subTagline: "We manufacture and install — 30 years in the industry.",
-  licenseText: "Ecocrete — precast + concrete product specialist. We manufacture and install.",
+  tagline: "Your precast concrete specialist",
+  subTagline: "A wide range of precast concrete products — We manufacture and install.",
+  licenseText: "Ecocrete — your precast concrete specialist. 30 years in the industry. We manufacture and install.",
   contactPerson: "Ecocrete Sales",
   phone: "073 966 9931",
   phoneClean: "+27739669931",
@@ -146,14 +146,14 @@ export const COMPANY_INFO = {
   serviceFootprint: "Free State, Northern Cape, Lesotho border, and central South Africa",
   hours: {
     weekdays: "Mon – Fri: 07:30 – 16:30",
-    saturday: "Saturday: 08:00 – 12:00",
+    saturday: "Saturday: Closed (Ons is nie Saterdag oop nie)",
     sunday: "Sunday: Closed"
   },
   stats: [
-    { value: "30", label: "Years in the industry", sub: "Casting in the Free State since the mid-1990s" },
+    { value: "30", label: "Years in the industry", sub: "Founded 30 years ago by Leon Lamprecht" },
     { value: "3", label: "Product families", sub: "Walling · Terraforce · Precast" },
     { value: "Yard", label: "Manufacture & install", sub: "One team from mould to finished wall" },
-    { value: "Local", label: "Bloemfontein based", sub: "Delivery on our own truck" }
+    { value: "Local", label: "Bloemfontein based", sub: "Employing local people and working in and around Bloemfontein" }
   ]
 };
 
@@ -164,19 +164,32 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: "walling",
     slug: "walling",
     title: "Walling",
-    tagline: "Uniquall panels and Precon Wall — Louvred, Between, Sandstone or Global Plain, in different heights.",
+    tagline: "Modern Uniq Wall (115kg Security Fence, 1.8m–2.45m) and traditional Stopnonsense in four patterns (up to 2.40m).",
     category: "Walling",
-    shortDesc: "Modular precast walling — Uniquall (650 & 500 slab) and Precon Wall in four finishes, available in different heights.",
+    shortDesc: "We offer clients a choice between our modern Uniq Wall (115kg panel Security Fence, 1.8m–2.45m high) and traditional precast Stopnonsense in Louvre, Sandstone, Smooth, and Brickface (up to 2.40m high).",
     heroImage: "/images/walling-stone-face.jpg",
-    fullDesc: `Our walling range covers two systems: Uniquall panels in 650-slab and 500-slab formats, and Precon Wall in four finishes — Louvred, Between, Sandstone and Global Plain. All are available in different heights so a run can step neatly down a sloping site.
+    fullDesc: `We offer our clients a choice on our modern precast concrete wall called our Uniq Wall, which comes in sizing from 1.8m to 2.450m high.
 
-    Walling is cast in the Ecocrete yard, delivered on our own vehicle, and — if you'd like — installed by our own team. It's a full boundary system: reinforced H-posts, interlocking slabs, and matching pillars and caps from the Precast range.`,
+We call it our Security Fence because our panel weighs 115kg and is not easy to remove or break. It provides serious privacy and formidable perimeter security for residential estates, smallholdings, and commercial sites.
+
+We also offer the traditional precast fence, also known as Stopnonsense, in four different patterns:
+• Louvre
+• Sandstone
+• Smooth
+• Brickface
+
+Heights can range up to 2.40m high.
+
+Precast walling is also a very cost-effective way to secure your property or can even be used as extra rooms for storage.
+
+All walling is manufactured in our own yard and installed by our experienced crew. Contact us for a free quote.`,
     applications: [
       "Residential and small-holding boundary walls",
+      "Security Fence installations (115kg heavy-duty panels)",
       "Estate perimeter walling with matching pillars and caps",
-      "Commercial and industrial site perimeters",
-      "Highway acoustic screens and noise-reduction walling",
-      "Feature stone-face elevations with mixed finishes"
+      "Traditional Stopnonsense fences (Louvre, Sandstone, Smooth, Brickface)",
+      "Modular precast rooms for storage and living quarters",
+      "Commercial and industrial site perimeters"
     ],
     galleryImages: [
       { url: "/images/precast-boundary-h-post.jpg", caption: "H-post and horizontal slab system, standard height", tag: "UNIQUALL" },
@@ -185,18 +198,18 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { url: "/images/precast-boundary-decorative.jpg", caption: "Uniq Wall with integrated pillars and decorative caps", tag: "UNIQ WALL" }
     ],
     benefits: [
-      { title: "Two systems", desc: "Uniquall in 650 & 500 slab formats, plus Precon Wall in four finishes.", iconName: "Layers" },
-      { title: "Different heights on one run", desc: "Available in a range of heights so the wall steps neatly down sloping ground.", iconName: "Ruler" },
-      { title: "Yard supply or installed", desc: "Collect from the yard, take delivery on our truck, or book our crew to install.", iconName: "Award" },
-      { title: "No paint, no rust, no rot", desc: "Precast concrete doesn't need painting, won't rust like steel, won't rot like timber.", iconName: "CheckCircle" }
+      { title: "Uniq Wall / Security Fence", desc: "115kg heavy-duty panels (1.8m to 2.45m high) engineered for maximum security — not easy to remove or break.", iconName: "ShieldCheck" },
+      { title: "Traditional Stopnonsense", desc: "Classic precast walling in four distinct patterns: Louvre, Sandstone, Smooth, and Brickface (up to 2.40m high).", iconName: "Layers" },
+      { title: "Cost-effective security & storage", desc: "Affordable property enclosure that can also be configured into modular storage rooms and buitekamers.", iconName: "Award" },
+      { title: "We manufacture & install", desc: "Cast in our Bloemfontein yard and erected on site by our own crew. Contact us for a free quote.", iconName: "CheckCircle" }
     ],
     specifications: [
-      { label: "Systems", value: "Uniquall (650 slabs, 500 slabs) · Precon Wall" },
-      { label: "Four panel types", value: "Louvred · Between · Sandstone · Global Plain" },
-      { label: "Heights", value: "Multiple panel heights — walls step down sloping sites" },
-      { label: "Post", value: "Reinforced H-post set in a 25 MPa concrete footing" },
-      { label: "Joint", value: "Tongue-and-groove — no sightline gap" },
-      { label: "Supply", value: "Yard collection or on our own truck" }
+      { label: "Uniq Wall heights", value: "1.80 m to 2.450 m high" },
+      { label: "Uniq panel mass", value: "115 kg per panel (Security Fence)" },
+      { label: "Stopnonsense patterns", value: "Louvre · Sandstone · Smooth · Brickface" },
+      { label: "Stopnonsense heights", value: "Up to 2.40 m high" },
+      { label: "Posts & footings", value: "Reinforced H-posts set in 25 MPa concrete footings" },
+      { label: "Supply & install", value: "Yard collection or turnkey installation by Ecocrete" }
     ],
     diagramPoints: [
       { id: "w-1", x: 35, y: 35, title: "Reinforced H-post", description: "Cast H-profile column carrying the horizontal slabs." },
@@ -204,27 +217,29 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { id: "w-3", x: 35, y: 80, title: "Concrete footing", description: "Post foot set in a 25 MPa concrete footing." }
     ],
     faq: [
-      { q: "What panel types can I choose from?", a: "There are four Precon panel types: Louvred, Between, Sandstone and Global Plain." },
-      { q: "Do you supply the pillars and caps too?", a: "Yes — pillars (square, fluted, round 200/300) and matching caps are in the Precast range, cast in the same yard for a matched finish." }
+      { q: "What patterns are available for the traditional precast fence (Stopnonsense)?", a: "We offer Stopnonsense in four different patterns: Louvre, Sandstone, Smooth, and Brickface, with heights up to 2.40m high." },
+      { q: "Why is the Uniq Wall called a Security Fence?", a: "Each Uniq Wall panel weighs 115kg, making it very heavy-duty and not easy to remove or break. Sizing ranges from 1.8m to 2.450m high." },
+      { q: "Can precast walling be used for storage rooms?", a: "Yes! Precast walling is a cost-effective way to build secure storage rooms, tool sheds, or extra living rooms." }
     ]
   },
   {
     id: "terraforce",
     slug: "terraforce",
     title: "Terraforce®",
-    tagline: "Licensed round-face retaining blocks — L15, 4x4, Step, Bat, Terrafix and Terrapac.",
+    tagline: "Licensed round-face retaining blocks — L15, 4x4 Step, Teracrete, Terrafix 100, Terrapac and Bat.",
     category: "Terraforce",
-    shortDesc: "The full Terraforce® range in stock — round-face gravity walls that take tight curves without cutting.",
+    shortDesc: "The full Terraforce® range in stock — L15, 4x4, 4x4 Step, Teracrete eco-surfacing, Terrafix 100 and Terrapac for gravity and terraced walls.",
     heroImage: "/images/terraforce-tiered-commercial.jpg",
     fullDesc: `Terraforce® round-face retaining blocks are our core retaining product. The interlocking open-loop profile takes convex and concave curves without cutting, and the hollow core takes topsoil so the wall doubles as a planter.
 
-    We stock the full block range — L15, 4x4, Step, Bat, Terrafix and Terrapac. Blocks leave the yard on our own truck; on request our site team lays the foundation, sets the wall, and hands it back finished.`,
+We stock the full block range — L15, 4x4, 4x4 Step, Teracrete, Terrafix 100, Terrapac and Bat. Blocks leave the yard on our own truck; on request our site team lays the foundation, sets the wall, and hands it back finished.`,
     applications: [
       "Residential garden terracing, poolside walls and driveway cuts",
       "Commercial site earth retention and slope stabilisation",
       "Roadside embankments and highway service-station cuts",
       "Planted 'green belt' walls with indigenous groundcover",
-      "Tiered feature walls and integrated garden steps"
+      "Tiered feature walls and integrated garden steps",
+      "Canal lining, spillways and permeable eco-surface paving"
     ],
     galleryImages: [
       { url: "/images/terraforce-tiered-commercial.jpg", caption: "Multi-tier Terraforce® L15 wall on a commercial site", tag: "L15 COMMERCIAL" },
@@ -236,11 +251,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     benefits: [
       { title: "Curves without cutting", desc: "Round-face profile handles convex and concave radii — no site cutting, no mortar.", iconName: "ShieldCheck" },
       { title: "Plantable open core", desc: "Every block has a hollow core that takes topsoil for indigenous groundcover.", iconName: "Leaf" },
-      { title: "Full range in stock", desc: "L15, 4x4, Step, Bat, Terrafix and Terrapac — mix profiles on the same wall for details.", iconName: "Layers" },
+      { title: "Full range in stock", desc: "L15, 4x4, 4x4 Step, Teracrete, Terrafix 100, Terrapac and Bat — mix profiles on the same wall.", iconName: "Layers" },
       { title: "Licensed manufacture", desc: "Terraforce® is a licensed product — quality-assured against the range spec.", iconName: "Award" }
     ],
     specifications: [
-      { label: "Block range", value: "L15 · 4x4 · Step · Bat · Terrafix · Terrapac" },
+      { label: "Block range", value: "L15 · 4x4 · 4x4 Step · Teracrete · Terrafix 100 · Terrapac · Bat" },
       { label: "Typical block (L15)", value: "340 × 400 × 180 mm · ≈ 25 kg" },
       { label: "Compressive strength", value: "22 – 30 MPa (SABS 1215 range)" },
       { label: "Blocks per m²", value: "≈ 14.7 blocks / m² at standard face angle" },
@@ -252,7 +267,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       location: "Free State",
       description: `A curved Terraforce® terrace wrapping a swimming pool patio. The round-face profile follows the pool line without cutting, and every open core has been planted so the wall reads as garden, not concrete.
 
-      The same crew that cast the blocks did the foundation, the setout and the planting — one point of contact from yard to finished wall.`,
+The same crew that cast the blocks did the foundation, the setout and the planting — one point of contact from yard to finished wall.`,
       quote: "It looks like a garden feature, not a retaining wall.",
       author: "Home Owner",
       highlight: "Ecocrete stocks and installs the full Terraforce® range across the Free State.",
@@ -265,7 +280,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { id: "tf-4", x: 25, y: 75, title: "Concrete strip footing", description: "Laser-levelled 25 MPa strip footing so the first course starts flat." }
     ],
     faq: [
-      { q: "Which Terraforce® blocks do you keep?", a: "The full working range — L15, 4x4, Step, Bat, Terrafix and Terrapac." },
+      { q: "Which Terraforce® blocks do you keep?", a: "The full working range — L15, 4x4, 4x4 Step, Teracrete, Terrafix 100, Terrapac and Bat." },
       { q: "Can you supply blocks only, or do you install as well?", a: "Both. Collect from the yard, take delivery on our truck, or have our team do the full install — foundation, wall and finishing." }
     ]
   },
@@ -273,71 +288,81 @@ export const SERVICES_DATA: ServiceDetail[] = [
     id: "extend-walling",
     slug: "extend-walling",
     title: "Extend Walling",
-    tagline: "Take an existing wall higher — matched profile, tied-in cleanly, no wall replacement.",
+    tagline: "We have been extending walls for years and years — extensions of 1 up to 3 slabs (300mm per slab).",
     category: "On-site Service",
-    shortDesc: "We add courses to an existing precast wall or retaining wall to make it higher — matched to the current profile and finish.",
+    shortDesc: "We have been extending walls for years and years. We offer extensions of 1 up to 3 slabs (each slab covers 300mm in height) to raise your fence without replacing it.",
     heroImage: "/images/precast-boundary-h-post.jpg",
-    fullDesc: `Sometimes the boundary just isn't high enough. Instead of replacing the wall, we extend it: we match the existing profile course-for-course, tie the new courses into the old, and finish so the join reads clean from the outside.
+    fullDesc: `We have been extending walls for years and years.
 
-    Extending works for both precast boundary walling (Uniquall / Precon) and Terraforce® retaining walls — as long as the existing footing and post depth can carry the new height. If it can't, we upgrade the footing at the same time.`,
+We offer extensions of 1 up to 3 slabs. One slab covers 300mm in height (giving you options for 300mm, 600mm, or 900mm of added height).
+
+Instead of tearing down an existing wall, extending your fence is a quick, cost-effective way to restore privacy, block new sightlines, or upgrade perimeter security. We match the existing profile course-for-course so the extension blends in seamlessly.
+
+Contact us for a free quote to give you options.`,
     applications: [
-      "Adding privacy height to an existing boundary wall",
-      "Raising an estate perimeter for security upgrades",
+      "Adding privacy height to an existing boundary wall (1 to 3 slabs)",
+      "Raising an estate perimeter or Stopnonsense wall for security upgrades",
       "Extending a retaining wall to hold a new landscaped tier",
       "Blocking new sightlines after next-door development",
-      "Matching an old wall profile when the original supplier is gone"
+      "Matching an old wall profile course-for-course"
     ],
     benefits: [
-      { title: "No replacement", desc: "Keep the existing wall — we only add what you need on top.", iconName: "CheckSquare" },
-      { title: "Matched profile", desc: "New courses match the existing panel or Terraforce® profile.", iconName: "Ruler" },
-      { title: "Clean join", desc: "New courses tie into the old cleanly — no visible seam from the street side.", iconName: "ShieldCheck" },
-      { title: "Footing upgrade if needed", desc: "If the existing footing can't carry more height, we deepen it as part of the job.", iconName: "Layers" }
+      { title: "No wall replacement", desc: "Keep the existing wall — we offer extensions of 1 up to 3 slabs (300mm per slab).", iconName: "CheckSquare" },
+      { title: "Matched profile", desc: "New courses match the existing panel or Stopnonsense profile.", iconName: "Ruler" },
+      { title: "Years of experience", desc: "We have been extending walls for years and years across Bloemfontein and Free State.", iconName: "Award" },
+      { title: "Free quote & options", desc: "Contact us for a free quote to give you options tailored to your existing wall.", iconName: "ShieldCheck" }
     ],
     specifications: [
-      { label: "Works on", value: "Precast walling (Uniquall / Precon) and Terraforce® retaining walls" },
-      { label: "Profile match", value: "Cast new panels or blocks to match the existing profile" },
-      { label: "Foundation", value: "Existing footing checked; deepened or reinforced if needed" },
-      { label: "Site visit", value: "Free within the Bloemfontein service area — booking on request" },
-      { label: "Coverage", value: "Free State, Northern Cape, Lesotho border, central SA" },
+      { label: "Extension range", value: "1 up to 3 slabs" },
+      { label: "Slab height", value: "300 mm per slab (300 mm, 600 mm, or 900 mm total extension)" },
+      { label: "Works on", value: "Precast walling, Stopnonsense and Terraforce® retaining walls" },
+      { label: "Profile match", value: "Cast new panels or blocks to match existing patterns" },
+      { label: "Foundation check", value: "Existing footings and posts inspected before extension" },
       { label: "Contact", value: "Ecocrete Sales — 073 966 9931" }
     ],
     diagramPoints: [
       { id: "e-1", x: 35, y: 55, title: "Existing wall", description: "Kept in place — new courses stack on top." },
-      { id: "e-2", x: 65, y: 30, title: "New courses", description: "Cast to match the existing profile and finish." }
+      { id: "e-2", x: 65, y: 30, title: "New courses", description: "1 to 3 slabs (300mm per slab) cast to match existing profile." }
     ],
     faq: [
-      { q: "Do you have to replace the whole wall?", a: "No. If the footing is sound, we only add what's needed on top and tie it into the existing wall." },
-      { q: "Can you extend a wall from a different manufacturer?", a: "Usually yes — we cast panels or blocks to match the existing profile. Send us a photo and we'll tell you." }
+      { q: "How much can you extend an existing wall?", a: "We offer extensions of 1 up to 3 slabs. One slab covers 300mm in height, giving you 300mm, 600mm, or 900mm in extra height." },
+      { q: "Do you have to replace the whole wall?", a: "No. We have been extending walls for years and years. If the footing is sound, we only add what's needed on top." },
+      { q: "Can you extend a wall from a different manufacturer?", a: "Usually yes — we cast panels or blocks to match the existing profile course-for-course. Send us a photo and we'll give you options." }
     ]
   },
   {
     id: "repairs",
     slug: "repairs",
     title: "Repairs",
-    tagline: "Shifted Terraforce® courses, cracked or leaning panels, broken caps — small jobs welcome.",
+    tagline: "Endless requests and endless possibilities — we can save your fence before it falls over.",
     category: "On-site Service",
-    shortDesc: "We repair walls we cast, and walls we didn't. Terraforce® courses re-set, panels replaced, posts re-plumbed.",
+    shortDesc: "Endless requests and endless possibilities. We can save your fence before it falls over — replacing only a few slabs or a broken pole from motor vehicles or Mother Nature.",
     heroImage: "/images/precast-boundary-smooth.jpg",
-    fullDesc: `Boundary walls take a knock and retaining walls shift with time. Instead of replacing the wall, we come out, assess the damage, and repair it in place: re-setting courses, swapping cracked panels, replumbing leaning posts, and replacing broken caps or copings.
+    fullDesc: `Endless requests and endless possibilities.
 
-    Small repair jobs are welcome — you don't have to be a big site to get a site visit. Photos over WhatsApp are usually enough to get an initial quote.`,
+We can save your fence before it falls over. We can replace only a few slabs or replace a broken pole.
+
+From motor vehicles going through fences to Mother Nature’s effects (storm washaways, falling tree limbs, ground shifting), we can save you money by repairing rather than replacing the entire boundary.
+
+With any repair, the sooner you contact us for a free quote, the better.`,
     applications: [
+      "Motor vehicle collision damage through fences",
+      "Mother Nature's effects — storm washaways, falling trees, soil movement",
+      "Replacing broken or leaning concrete posts (poles)",
+      "Replacing cracked or damaged individual wall slabs",
       "Shifted or slumped Terraforce® retaining courses",
-      "Cracked or impact-damaged precast boundary panels",
-      "Leaning or knocked H-posts",
-      "Broken or missing pillar caps and copings",
-      "Sagging kerbs, cracked copings and knocked pillar caps"
+      "Broken or missing pillar caps, copings and window sills"
     ],
     benefits: [
-      { title: "Repair, don't replace", desc: "We fix what's there rather than tearing the wall out.", iconName: "CheckSquare" },
-      { title: "Small jobs welcome", desc: "One panel, one course, one cap — happy to come out for it.", iconName: "Users" },
-      { title: "WhatsApp a photo", desc: "Send a photo to 073 966 9931 for an initial idea of scope and cost.", iconName: "Phone" },
-      { title: "Match parts from the yard", desc: "Replacement panels, blocks and caps cast in the same yard for a matched finish.", iconName: "Award" }
+      { title: "Save your fence before it falls", desc: "Endless requests and endless possibilities — prompt intervention saves the whole wall.", iconName: "CheckSquare" },
+      { title: "Replace few slabs or broken pole", desc: "No need to replace the entire wall when only a few slabs or a single post need swapping.", iconName: "Wrench" },
+      { title: "Save money on repairs", desc: "From motor vehicles to Mother Nature's effects, repairing saves you thousands over rebuilding.", iconName: "Award" },
+      { title: "The sooner the better", desc: "With any repair, the sooner you contact us for a free quote, the better.", iconName: "Phone" }
     ],
     specifications: [
+      { label: "Wall repairs", value: "Replacing broken slabs, replumbing or replacing broken poles" },
       { label: "Terraforce® repairs", value: "Course re-setting, block replacement, backfill drainage" },
-      { label: "Panel repairs", value: "Cracked / knocked panel replacement, joint re-setting" },
-      { label: "Post repairs", value: "Leaning / knocked post replumb or replacement" },
+      { label: "Collision & storm damage", value: "Insurance quotes and emergency repair assessments" },
       { label: "Cap & coping", value: "Replacement caps, copings and window sills cast on request" },
       { label: "Site visit", value: "Bloemfontein & surrounds — WhatsApp a photo for a quick quote" },
       { label: "Contact", value: "Ecocrete Sales — 073 966 9931" }
@@ -347,69 +372,89 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { id: "r-2", x: 65, y: 60, title: "Replaced panel", description: "Cracked panel swapped, joint re-sealed, cap re-set." }
     ],
     faq: [
-      { q: "Do you repair walls you didn't build?", a: "Yes. If the profile is standard we can supply matching parts; if it isn't we cast to match." },
-      { q: "How do I get a quick quote?", a: "WhatsApp a photo and the site address to 073 966 9931 — we'll come back to you with an idea of scope." }
+      { q: "Can you save a fence that is leaning?", a: "Yes! We can save your fence before it falls over by replumbing posts, replacing broken slabs, or underpinning footings." },
+      { q: "Can you repair vehicle damage through a wall?", a: "Yes. From motor vehicles going through fences to Mother Nature's effects, we replace only the damaged slabs and broken poles to save you money." },
+      { q: "How quickly should I contact you for repairs?", a: "With any repair, the sooner you contact us for a free quote, the better — preventing further collapse or security risks." }
     ]
   },
   {
     id: "precast",
     slug: "precast",
     title: "Precast",
-    tagline: "Stepping stones, pillar caps, copings, channels, window sills, gulleys, balls, waskattie, kerbs and pillars.",
+    tagline: "HUGE RANGE of moulds — Tuscan window sills, pillars, caps, bollards, gulleys, stepping stones, waskatties & water-friendly garden products.",
     category: "Precast",
-    shortDesc: "The full precast range — everything the walling and Terraforce® ranges leave off, cast in the Ecocrete yard.",
+    shortDesc: "Ecocrete has a HUGE RANGE of moulds for custom precast products you can't buy off a shelf: Tuscan & standard sills (170mm, 250mm, 500mm), pillars, copings, gulleys, stepping stones, waskatties, cement balls, bollards, tree grids, and kerbs.",
     heroImage: "/images/stepping-stones-pyramid.jpg",
-    fullDesc: `The precast range is what's on the pallets in the Ecocrete yard alongside the walling: stepping stones (Pyramid 400 / Pyramid 500 / Roman), pillar caps (400×400, 450×450, 500×500 and 500×800), copings, channels (half-round and paving 600/900), window sills (170 mm wyd × 80/60 mm hoog × 1 m lank), gulleys (small and big), precast balls (230 and 300), waskattie wash basins (enkel and dubbel), kerbs, and pillars (square, fluted, round 200/300).
+    fullDesc: `Ecocrete have a HUGE RANGE of moulds for precast products which include:
+• Pillars and Pillar Caps (Round 250, Fluted, Spiral, Square, Devilsfork)
+• Windowsills — 170mm, 250mm and 500mm (from Tuscan window sills to standard profiles)
+• Copings (e.g. 350 × 1,000 mm raised centre)
+• Gulleys (small and big)
+• Stepping Stones (Pyramid 400/500, Roman)
+• Washbasins / Waskatties (Enkel & Dubbel)
+• Cement Balls (230 & 300 mm)
+• Bollards
+• Garden Kerbs & Channels with Channel Covers
 
-    Most items are on the pallet in the yard for collection. Custom quantities and bespoke sizes are cast to order on a short lead time.`,
+Water-Friendly Garden & Landscaping:
+We already have a lot of precast products available for a water-friendly garden, and we are expanding our range.
+Currently we can offer you:
+• Stepping stones
+• Water channels & channel covers
+• Washbasins (waskatties)
+• Concrete benches & tables
+• Tree grids
+• Pillars & Bollards
+• Braai units & Decorative screen blocks
+
+Ecocrete specialises in custom products which you can't buy off a shelf.`,
     applications: [
-      "Garden paths, stepping stones and patio inserts",
-      "Gate pillars, pillar caps and coping stones",
-      "Window sills — 170 mm format (1 m lank)",
-      "Channels, gulleys, kerb edging and wash-down bays",
-      "Ornamental balls, planters, tables, benches & braai units"
+      "Water-friendly garden landscaping (tree grids, stepping stones, water channels)",
+      "Gate pillars (Round 250, Fluted, Spiral, Square) and matching pillar caps",
+      "Windowsills — 170 mm, 250 mm, 500 mm and Tuscan architectural sills",
+      "Perimeter security: Bollards, cement balls (230/300), and under-fence plinths",
+      "Drainage channels, channel covers, gulleys, and kerb edging",
+      "Outdoor scullery washbasins (waskatties — enkel & dubbel)",
+      "Custom precast moulds you can't buy off a shelf"
     ],
     galleryImages: [
       { url: "/images/stepping-stones-pyramid.jpg", caption: "Pyramid-pattern stepping stones on pallet", tag: "STEPPING STONES" },
       { url: "/images/concrete-gully.jpg", caption: "Precast concrete drainage gulleys on pallet", tag: "GULLEYS" },
       { url: "/images/pillar-caps-pyramid.jpg", caption: "Pyramid pillar caps stacked on pallet", tag: "PILLAR CAPS" },
-      { url: "/images/devilsfork-pillar.jpg", caption: "Devilsfork pillar integrated with palisade fencing", tag: "DEVILSFORK" },
-      { url: "/images/precast-pillars-yard.jpg", caption: "Square, fluted and round precast pillars", tag: "PILLARS" },
-      { url: "/images/balusters.jpg", caption: "Turned white balusters for a balcony run", tag: "BALUSTERS" },
+      { url: "/images/devilsfork-pillar-lamp.jpg", caption: "Devilsfork pillar with lantern mounting", tag: "DEVILSFORK" },
+      { url: "/images/precast-pillars-yard.jpg", caption: "Square, fluted, spiral and round precast pillars", tag: "PILLARS" },
+      { url: "/images/balustrades-patio-night.jpg", caption: "Precast turned balustrades on patio", tag: "BALUSTRADES" },
       { url: "/images/coping-350x1000.jpg", caption: "Coping — 350 mm wide × 1,000 mm long, raised centre profile", tag: "COPING" },
-      { url: "/images/kerb-installation.jpg", caption: "Precast kerbstone laid against fresh paving", tag: "KERB" },
+      { url: "/images/precast-kerb-estate-road.jpg", caption: "Precast road kerb installed along estate roadway", tag: "KERB" },
       { url: "/images/landscaping-concrete-braai.jpg", caption: "Stone-face precast concrete braai", tag: "BRAAI" },
-      { url: "/images/precast-table-bench.jpg", caption: "Precast garden table with matching benches", tag: "TABLE & BENCH" },
-      { url: "/images/screen-blocks.jpg", caption: "Decorative screen blocks on pallet", tag: "SCREEN BLOCK" },
-      { url: "/images/precast-table-bench-stool.jpg", caption: "Precast bench, table and geometric stool patio set", tag: "FURNITURE" },
+      { url: "/images/precast-table-bench-patio.jpg", caption: "Precast patio table, bench and geometric stool", tag: "TABLE & BENCH" },
+      { url: "/images/screen-blocks-installed.jpg", caption: "Decorative screen blocks installed for privacy wall", tag: "SCREEN BLOCK" },
       { url: "/images/channel-cover.jpg", caption: "Precast concrete channel cover slab with drainage holes", tag: "CHANNEL COVER" },
-      { url: "/images/precast-concrete-balls.jpg", caption: "Ornamental precast concrete balls on pallet", tag: "BALLS" }
+      { url: "/images/precast-concrete-balls.jpg", caption: "Ornamental precast concrete balls on pallet", tag: "BALLS" },
+      { url: "/images/waskattie-ablution-troughs.jpg", caption: "Precast waskattie washbasins / ablution troughs", tag: "WASKATTIE" }
     ],
     benefits: [
-      { title: "The full range in one yard", desc: "Stepping stones, caps, copings, channels, sills, gulleys, balls, waskattie, kerbs and pillars — no running around.", iconName: "Layers" },
-      { title: "Matched pillar to cap", desc: "Square, fluted and round pillars with caps sized to match — same yard, same finish.", iconName: "Ruler" },
-      { title: "Small quantities off the pallet", desc: "Grab a few window sills or a couple of caps without a minimum order.", iconName: "Award" },
-      { title: "Custom sizes cast to order", desc: "Non-standard sizes cast on a short lead time — bring the dimension.", iconName: "Sun" }
+      { title: "Huge range of moulds", desc: "Specialising in custom products you can't buy off a shelf — from Tuscan window sills to normal gulleys.", iconName: "Layers" },
+      { title: "Water-friendly garden range", desc: "Tree grids, water channels, stepping stones, bollards and benches designed for water-wise living.", iconName: "Leaf" },
+      { title: "Pillars & matching caps", desc: "Round 250, Fluted, Spiral and Square pillars paired with matching pyramid caps.", iconName: "Ruler" },
+      { title: "Small quantities off the pallet", desc: "Collect a couple of sills, caps, waskatties or bollards without a minimum order.", iconName: "Award" }
     ],
     specifications: [
-      { label: "Stepping stones", value: "Pyramid 400 · Pyramid 500 · Roman" },
-      { label: "Pillars", value: "Square · Fluted · Round 200 · Round 300" },
-      { label: "Pillar caps", value: "400×400 · 450×450 · 500×500 · 500×800" },
-      { label: "Coping", value: "1,000 mm long × 350 mm wide · 70 mm centre · 50 mm edges" },
-      { label: "Channels", value: "Half Round · Paving 600 · Paving 900 · Channel Covers" },
-      { label: "Window sills", value: "170 mm wyd × 80 mm agter / 60 mm voor × 1 m lank" },
-      { label: "Gulleys", value: "Small · Big" },
-      { label: "Waskattie basins", value: "Enkel · Dubbel" },
-      { label: "Balls", value: "230 · 300" },
-      { label: "Also cast", value: "Copings, kerbs, balusters, screen blocks, planters, tables, benches, braai units" }
+      { label: "Mould variety", value: "HUGE RANGE of moulds for standard and custom precast" },
+      { label: "Pillars & Caps", value: "Round 250 · Fluted · Spiral · Square · Devilsfork" },
+      { label: "Windowsills", value: "170 mm · 250 mm · 500 mm · Tuscan architectural profiles" },
+      { label: "Water-friendly range", value: "Tree grids · Water channels & covers · Stepping stones · Washbasins · Benches" },
+      { label: "Security & Accents", value: "Bollards · Cement balls (230 & 300) · Under-fence plinths · Garden kerbs" },
+      { label: "Drainage", value: "Gulleys (Small & Big) · Half-round channels · Dish channels" }
     ],
     diagramPoints: [
-      { id: "p-1", x: 30, y: 40, title: "Matched pillar + cap", description: "Pillars and caps cast in the same yard so they match on profile and finish." },
-      { id: "p-2", x: 65, y: 60, title: "Stone-face relief", description: "Steel moulds give consistent ashlar-style stone face on walls, braais and planters." }
+      { id: "p-1", x: 30, y: 40, title: "Matched pillar + cap", description: "Pillars (Round 250, Fluted, Spiral, Square) and caps cast in the same yard." },
+      { id: "p-2", x: 65, y: 60, title: "Stone-face relief", description: "Consistent relief moulds for Tuscan sills, braais, planters and screens." }
     ],
     faq: [
-      { q: "Can I collect small quantities from the yard?", a: "Yes — most stock items are on the pallet ready to load. Larger quantities are best pre-ordered." },
-      { q: "Do you cast custom sizes?", a: "Yes. Non-standard sizes are cast to order on a short lead time — send the dimension and quantity." }
+      { q: "What windowsills do you manufacture?", a: "We cast windowsills in 170mm (1m long with water runoff slope), 250mm, and 500mm, as well as architectural Tuscan window sills." },
+      { q: "What is in your water-friendly garden range?", a: "We offer stepping stones, water channels, channel covers, washbasins (waskatties), concrete benches, tree grids, pillars, bollards, and permeable pavers." },
+      { q: "Can you cast custom precast products?", a: "Yes! Ecocrete specialises in custom products which you can't buy off a shelf. Bring your dimension or drawing and we'll cast it." }
     ]
   }
 ];
@@ -1089,27 +1134,35 @@ export const FAQ_GENERAL = [
     answer: "We're based in Bloemfontein, Free State. We manufacture in our own yard and deliver / install across the Free State, Northern Cape, the Lesotho border and central South Africa."
   },
   {
+    question: "Are you open on Saturdays?",
+    answer: "No, we are closed on Saturdays and Sundays ('ons is nie Saterdag oop nie'). Our trading hours are Monday to Friday, 07:30 to 16:30."
+  },
+  {
+    question: "What is the difference between Uniq Wall and traditional Stopnonsense?",
+    answer: "Our modern Uniq Wall is our Security Fence — each panel weighs 115kg, making it extremely durable and not easy to remove or break (available from 1.8m to 2.450m high). We also offer traditional Stopnonsense in four patterns: Louvre, Sandstone, Smooth, and Brickface (up to 2.40m high)."
+  },
+  {
     question: "Do you supply only, or do you install too?",
     answer: "Both. Collect from the yard, take delivery on our truck, or book our own site crew for the full install — foundation, wall and finishing. 'We manufacture and install' — it's on the signboard."
   },
   {
     question: "Which Terraforce® blocks do you keep?",
-    answer: "The full working range — L15, 4x4, Step, Bat, Terrafix and Terrapac. Larger custom quantities are cast to order on a short lead time."
+    answer: "The full working range — L15, 4x4, 4x4 Step, Teracrete (permeable eco-surfacing), Terrafix 100, Terrapac and Bat. Larger custom quantities are cast to order on a short lead time."
   },
   {
-    question: "Can you extend an existing wall higher?",
-    answer: "Yes — extending walling is a standard job for us, on both precast boundary walls and Terraforce® retaining walls. We match the existing profile course-for-course."
+    question: "How much can you extend an existing wall with Ex-Tend a Wall?",
+    answer: "We offer extensions of 1 up to 3 slabs. One slab covers 300mm in height (giving you options for 300mm, 600mm, or 900mm of added height). We have been extending walls for years and years — contact us for a free quote to give you options."
   },
   {
     question: "Do you handle small repair jobs?",
-    answer: "Yes. Shifted Terraforce® courses, cracked panels, leaning posts, replacement caps — small repair jobs are welcome, not just full installs. WhatsApp a photo to 073 966 9931 for a quick quote."
+    answer: "Yes! Endless requests and endless possibilities — we can save your fence before it falls over, whether it requires replacing only a few slabs or replacing a broken pole from motor vehicles or Mother Nature. WhatsApp a photo to 073 966 9931 for a quick free quote."
   },
   {
-    question: "What's in the Precast range?",
-    answer: "Stepping stones (Pyramid 400/500, Roman), pillar caps (400×400/450×450/500×500/500×800), copings, channels (half-round and paving 600/900) & channel covers, window sills (170 mm × 1 m), gulleys (small/big), balls (230/300), balustrades, waskattie (enkel/dubbel), kerbs and pillars (square, fluted, round 200/300)."
+    question: "What moulds are available in the Precast range?",
+    answer: "Ecocrete has a huge range of moulds: Pillars and pillar caps (Round 250, Fluted, Spiral, Square), Windowsills (170mm, 250mm, 500mm and Tuscan sills), Copings, Gulleys, Stepping stones, Washbasins (Waskatties), Cement balls, Bollards, Garden kerbs, Tree grids, and water channels."
   },
   {
     question: "How do I request a quote?",
-    answer: "Use the Quote form on this site, email sales@ecocrete.co.za, phone the yard on 051 435 3590, or call / WhatsApp sales on 073 966 9931."
+    answer: "Use the Request a Quote button on this site, email sales@ecocrete.co.za, phone the yard on 051 435 3590, or call / WhatsApp sales directly on 073 966 9931."
   }
 ];

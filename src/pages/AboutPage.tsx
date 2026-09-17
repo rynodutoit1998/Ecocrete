@@ -66,23 +66,21 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenQuote, onNavigate })
                 Our story
               </div>
               <h2 style={{ fontSize: '2rem', color: '#232623', margin: '0 0 1rem' }}>
-                A yard, a truck, and thirty years of casting.
+                From Hercules Beton to 30 years of family precast excellence.
               </h2>
               <p style={{ color: '#2D312E', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-                The signboard outside the yard reads: <em>&ldquo;Ecocrete — Your precast &amp; concrete product
-                specialist. 30 Years in the Industry. We manufacture and install.&rdquo;</em> That&apos;s the
-                whole business in one line.
+                Ecocrete started 30 years ago when <strong>Leon Lamprecht</strong> bought <strong>Hercules Beton</strong>,
+                which originally only made lintels. Over the decades, products kept adding on and the business grew into a proud
+                family business — and still is today.
               </p>
               <p style={{ color: '#2D312E', fontSize: '1rem', lineHeight: 1.7, marginBottom: '1rem' }}>
-                What comes out of the yard is organised the way any builder thinks:
-                <strong> Walling</strong> on one side (Uniquall and Precon in four finishes),
-                <strong> Terraforce® </strong>on the other (the full licensed block range), and the
-                <strong> Precast </strong>range on pallets in between — stepping stones, pillars, caps,
-                copings, sills, balls, waskattie, kerbs and more.
+                We manufacture and install our own precast products. Ecocrete specialises in custom products which you can&apos;t
+                buy off a shelf. We have a very wide range of moulds, from architectural Tuscan window sills to normal gulleys,
+                stepping stones, and heavy-duty 115kg Uniq Wall security panels.
               </p>
               <p style={{ color: '#2D312E', fontSize: '1rem', lineHeight: 1.7 }}>
-                We also extend existing walls higher and repair walls that have shifted or been knocked —
-                small jobs welcome, big jobs handled.
+                We proudly employ local people and work in and around Bloemfontein and across the Free State.
+                Your trusted supplier and installer for precast concrete products.
               </p>
             </div>
 

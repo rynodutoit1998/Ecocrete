@@ -23,22 +23,22 @@ const PRODUCT_FAMILIES = [
   {
     slug: 'walling',
     title: 'Walling',
-    tagline: 'Uniquall & Precon',
-    blurb: 'Uniquall (650 & 500 slab) and Precon Wall in four finishes — Louvred, Between, Sandstone and Global Plain. Available in different heights.',
+    tagline: 'Uniq Wall & Stopnonsense',
+    blurb: 'Modern Uniq Wall (115kg Security Fence, 1.8m–2.45m) and traditional Stopnonsense in four patterns: Louvre, Sandstone, Smooth, and Brickface (up to 2.40m).',
     image: '/images/precast-boundary-h-post.jpg'
   },
   {
     slug: 'terraforce',
     title: 'Terraforce®',
     tagline: 'Licensed round-face retaining',
-    blurb: 'The full block range — L15, 4x4, Step, Bat, Terrafix and Terrapac. Round-face profile handles curves without cutting; every core plants.',
+    blurb: 'The full block range — L15, 4x4, 4x4 Step, Teracrete eco-surfacing, Terrafix 100, Terrapac and Bat. Round-face profile handles curves without cutting.',
     image: '/images/terraforce-tiered-commercial.jpg'
   },
   {
     slug: 'precast',
     title: 'Precast',
-    tagline: 'Everything else, cast in the yard',
-    blurb: 'Stepping stones, pillar caps, copings, channels, window sills, gulleys, balls, waskattie, kerbs and pillars — the full range on pallets in the yard.',
+    tagline: 'Huge range of custom moulds',
+    blurb: 'Tuscan & standard window sills, pillars, caps, bollards, gulleys, stepping stones, washbasins (waskatties), balls, kerbs and water-friendly garden items.',
     image: '/images/stepping-stones-pyramid.jpg'
   }
 ];
@@ -47,15 +47,15 @@ const PRODUCT_FAMILIES = [
 const ON_SITE_SERVICES = [
   {
     slug: 'extend-walling',
-    title: 'Extend Walling',
+    title: 'Ex-Tend a Wall',
     icon: Layers,
-    blurb: 'Take an existing wall higher — matched profile, tied in cleanly, no wall replacement.'
+    blurb: 'We have been extending walls for years and years — extensions of 1 up to 3 slabs (300mm per slab). Matched profile, no replacement.'
   },
   {
     slug: 'repairs',
     title: 'Repairs',
     icon: Wrench,
-    blurb: 'Shifted Terraforce® courses, cracked panels, leaning posts, replacement caps. Small jobs welcome.'
+    blurb: 'Endless possibilities — we can save your fence before it falls over. Replacing broken slabs or poles from vehicle impacts or Mother Nature.'
   }
 ];
 
