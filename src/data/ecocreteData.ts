@@ -117,7 +117,7 @@ export const PROJECTS_GALLERY: ProjectShowcaseItem[] = [
 export interface ProductItem {
   id: string;
   name: string;
-  category: 'walling' | 'terraforce' | 'precast' | 'landscaping';
+  category: 'walling' | 'terraforce' | 'storage-units' | 'precast' | 'landscaping';
   categoryLabel: string;
   code: string;
   image: string;
@@ -476,6 +476,21 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     inStock: true
   },
   {
+    id: "prod-uniqwall-steel",
+    name: "Uniq Wall with Steel",
+    category: "walling",
+    categoryLabel: "Walling",
+    code: "UNIQ-STEEL",
+    image: "/images/walling-uniq-steel.jpg",
+    shortDesc: "Uniq Wall precast perimeter walling integrated with black steel security mesh panels for visibility and heightened perimeter security.",
+    dimensions: "Available in different heights · Custom steel panels",
+    weight: "Per installation",
+    strengthMPa: "≈ 25 – 30 MPa concrete + structural steel",
+    application: "Commercial premises, business parks, and residential perimeters requiring solid concrete privacy below with security visibility above",
+    features: ["Heavy-duty steel mesh upper inserts", "Solid smooth precast concrete base slabs", "Reinforced precast H-posts and columns", "Estate & commercial security compliant", "Manufactured in yard & installed on site"],
+    inStock: true
+  },
+  {
     id: "prod-precon-between",
     name: "Precon Wall — Between",
     category: "walling",
@@ -518,6 +533,71 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     strengthMPa: "≈ 25 – 30 MPa",
     application: "Modern boundary walls, industrial estate perimeters",
     features: ["Smooth fair-face finish", "No paint required", "Cast in the Ecocrete yard", "Available in different heights"],
+    inStock: true
+  },
+
+  // ==================== STORAGE & MODULAR UNITS ====================
+  {
+    id: "prod-precast-living-unit",
+    name: "Precon Modular Living Unit / Buitekamer",
+    category: "storage-units",
+    categoryLabel: "Storage & Units",
+    code: "PC-LIVING-UNIT",
+    image: "/images/precast-storage-room.jpg",
+    shortDesc: "Permanent modular precast concrete room for living quarters, staff accommodation, granny flats or backyard rooms — 'mense bly ook in dit'.",
+    dimensions: "Custom layouts · e.g. 3m × 3m, 3m × 6m, L-shape",
+    weight: "Engineered precast structure",
+    strengthMPa: "≈ 25 – 30 MPa reinforced precast panels",
+    application: "Staff accommodation, backyard rooms, granny flats, student housing, farm worker dwellings, site offices",
+    features: [
+      "Heavy-duty reinforced precast interlocking wall panels",
+      "Pre-fitted window and exterior steel door openings",
+      "Corrugated iron pitched roof structure",
+      "Thermal stability — cool in summer, solid in winter",
+      "Fire, rodent and weather resistant",
+      "Fast on-site erection by the Ecocrete team"
+    ],
+    inStock: true
+  },
+  {
+    id: "prod-precast-storage-unit",
+    name: "Precon Storage Unit / Stoorkamer",
+    category: "storage-units",
+    categoryLabel: "Storage & Units",
+    code: "PC-STORAGE-UNIT",
+    image: "/images/precast-storage-room.jpg",
+    shortDesc: "Heavy-duty secure precast lock-up storage unit for tools, garden equipment, farm supplies and commercial inventory.",
+    dimensions: "Standard 3m × 3m · 3m × 6m · Custom footprints",
+    weight: "Engineered precast structure",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Secure tool sheds, garden storage, farm implement lock-ups, commercial warehouse overflow, generator & pump rooms",
+    features: [
+      "Vandal-resistant solid precast walling",
+      "Secure lock-up steel door frame",
+      "Weatherproof pitched roof with drainage overhang",
+      "No maintenance, painting or rotting like timber Wendy houses",
+      "Manufactured in our yard & erected on site"
+    ],
+    inStock: true
+  },
+  {
+    id: "prod-precast-guard-hut",
+    name: "Precon Security Guard Hut / Waghuisie",
+    category: "storage-units",
+    categoryLabel: "Storage & Units",
+    code: "PC-GUARD-HUT",
+    image: "/images/precast-storage-room.jpg",
+    shortDesc: "Compact precast security control room and guard shelter for gatehouses, commercial entrances and farm gates.",
+    dimensions: "Compact guard footprint · e.g. 2m × 2m / 2.5m × 2.5m",
+    weight: "Modular precast unit",
+    strengthMPa: "≈ 25 – 30 MPa",
+    application: "Access control gates, site entrances, estate security check-points, farm perimeter control points",
+    features: [
+      "Reinforced precast concrete walls for high security",
+      "Multi-angle observation windows",
+      "Weatherproof insulated roof",
+      "Fast foundation and erection turnaround"
+    ],
     inStock: true
   },
 

@@ -7,9 +7,10 @@ interface ProductsPageProps {
   onOpenQuote: (productId?: string) => void;
 }
 
-const CATEGORIES: { id: 'all' | 'walling' | 'terraforce' | 'precast' | 'landscaping'; label: string; sub?: string }[] = [
+const CATEGORIES: { id: 'all' | 'walling' | 'storage-units' | 'terraforce' | 'precast' | 'landscaping'; label: string; sub?: string }[] = [
   { id: 'all', label: 'All / Gallery' },
-  { id: 'walling', label: 'Walling', sub: 'Uniquall · Precon: Louvred · Between · Sandstone · Global Plain' },
+  { id: 'walling', label: 'Walling', sub: 'Uniquall · Uniq Wall with Steel & Pillars · Precon: Louvre · Between · Sandstone · Global Plain' },
+  { id: 'storage-units', label: 'Storage & Modular Units', sub: 'Precast rooms · Living units / buitekamers · Storage units / stoorkamers · Guard huts' },
   { id: 'terraforce', label: 'Terraforce®', sub: 'L15 · 4x4 · Step · Bat · Terrafix · Terrapac' },
   { id: 'precast', label: 'Precast', sub: 'Stepping stones · Pillar caps · Copings · Channels · Window sills · Gulleys · Balls · Waskattie · Kerbs · Pillars' },
   { id: 'landscaping', label: 'Landscaping', sub: 'Outdoor furniture · Braais · Screen blocks · Stepping stones · Pillars · Caps · Copings · Balls · Kerbs' }
