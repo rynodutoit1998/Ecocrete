@@ -382,6 +382,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { url: "/images/precast-table-bench.jpg", caption: "Precast garden table with matching benches", tag: "TABLE & BENCH" },
       { url: "/images/screen-blocks.jpg", caption: "Decorative screen blocks on pallet", tag: "SCREEN BLOCK" },
       { url: "/images/precast-table-bench-stool.jpg", caption: "Precast bench, table and geometric stool patio set", tag: "FURNITURE" },
+      { url: "/images/channel-cover.jpg", caption: "Precast concrete channel cover slab with drainage holes", tag: "CHANNEL COVER" },
       { url: "/images/precast-concrete-balls.jpg", caption: "Ornamental precast concrete balls on pallet", tag: "BALLS" }
     ],
     benefits: [
@@ -395,7 +396,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       { label: "Pillars", value: "Square · Fluted · Round 200 · Round 300" },
       { label: "Pillar caps", value: "400×400 · 450×450 · 500×500 · 500×800" },
       { label: "Coping", value: "1,000 mm long × 350 mm wide · 70 mm centre · 50 mm edges" },
-      { label: "Channels", value: "Half Round · Paving 600 · Paving 900" },
+      { label: "Channels", value: "Half Round · Paving 600 · Paving 900 · Channel Covers" },
       { label: "Window sills", value: "250 · 500" },
       { label: "Gulleys", value: "Small · Big" },
       { label: "Waskattie basins", value: "Enkel · Dubbel" },
@@ -833,6 +834,27 @@ export const PRODUCTS_CATALOG: ProductItem[] = [
     strengthMPa: "≈ 25 – 30 MPa",
     application: "Paved yards, driveways, walkways and surface-water drainage management",
     features: ["600 mm length", "150 mm outside height", "70 mm centre height", "Shaped dish fall directs water flow"],
+    inStock: true
+  },
+  {
+    id: "prod-channel-cover",
+    name: "Channel Cover",
+    category: "precast",
+    categoryLabel: "Precast",
+    code: "PC-CH-COVER",
+    image: "/images/channel-cover.jpg",
+    shortDesc: "Precast concrete channel cover slab with diamond non-slip tread and drainage holes to fit securely over stormwater channels.",
+    dimensions: "Heavy-duty slab with rebated interlocking underside",
+    weight: "Per size",
+    strengthMPa: "≈ 30 MPa reinforced precast concrete",
+    application: "Walkways, pedestrian crossings over open channels, factory yards, paved driveways and surface drainage",
+    features: [
+      "Non-slip diamond tread surface pattern",
+      "Cast-in drainage holes for continuous runoff water entry",
+      "Rebated underside edges to lock into channel profile without sliding",
+      "High load-bearing reinforced concrete",
+      "Manufactured in Ecocrete yard for standard channels"
+    ],
     inStock: true
   },
   {
